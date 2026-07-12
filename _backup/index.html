@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ankur Shinde — Portfolio. Researcher in agentic systems, distributed protocols, and institutional infrastructure.">
+  <title>Ankur Shinde — Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=1.4">
+</head>
+<body class="home-page">
+  <header class="navbar">
+    <div class="wrap nav-wrap">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="publications.html" class="nav-link">Publications</a>
+        <a href="articles.html" class="nav-link">Articles</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero-grid">
+        <!-- Photo Column -->
+        <div class="photo-container">
+          <div class="technical-frame">
+            <!-- Architectural Corner Registration Marks -->
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+            
+            <!-- Technical Labels -->
+            <div class="crosshair-label top-label">FIG. 1B</div>
+            <div class="crosshair-label bottom-label">SCALE 1.0</div>
+            
+            <!-- The Photo Frame -->
+            <div class="photo-frame">
+              <img src="7e615bb7-a451-4fdd-a794-770f2dab21b6.png" alt="Ankur Shinde" class="base-img" id="baseImage">
+              <img src="ankur_stippled.png" alt="Ankur Shinde Stippled" class="stipple-overlay" id="stippleImage">
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Column -->
+        <div class="hero-content">
+          <h1>Ankur Shinde</h1>
+          <div class="hero-bio" id="bioText">
+            <p><span class="scramble-wrapper"><span id="scrambleHello">Hello</span></span>! I'm a researcher and engineer working at the intersection of <strong>agentic and financial infrastructure</strong>.</p>
+            <p>I'm the Head of Media at <strong><a href="http://projectnanda.org/" target="_blank" rel="noopener noreferrer" class="bio-link">Project NANDA</a></strong>, an initiative for building the open agentic web, started at the <strong><a href="https://nanda.mit.edu/" target="_blank" rel="noopener noreferrer" class="bio-link">MIT Media Lab</a></strong>.</p>
+            <p>I work on <strong>cross-border transactions</strong> between AI agents and the trust systems behind them - the foundation for an open and decentralized marketplace.</p>
+          </div>
+          <div class="action-row">
+            <!-- LinkedIn Action -->
+            <div class="technical-btn-wrap">
+              <!-- Architectural Corner Registration Marks -->
+              <div class="btn-corner tl"></div>
+              <div class="btn-corner tr"></div>
+              <div class="btn-corner bl"></div>
+              <div class="btn-corner br"></div>
+              <a href="https://www.linkedin.com/in/ankurshinde/" class="btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <script>
+    // Automatically respect system theme preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+
+    // Scrambled Greetings Array (Starts with English, Marathi, Hindi, Gujarati, Chinese)
+    const hellos = [
+      "Hello",         // English
+      "नमस्कार",       // Marathi
+      "नमस्ते",        // Hindi
+      "કેમ છો",        // Gujarati
+      "你好",          // Chinese
+      
+      // All other unique languages
+      "Hallo", "Përshëndetje", "እው ሰላም ነው", "مرحبًا", "Barev", "Kamisaki", "Salam", "Kaixo", "Вітаю",
+      "হ্যালো", "Zdravo", "Здравейте", "ဟယ်လို", "Hola", "Kamusta", "Moni", "Bonghjornu", "Ahoj",
+      "Hej", "Dia dhuit", "Ola", "გამარჯობა", "Guten Tag", "Γεια", "Mba'éichapa", "Bonjou", "Aloha", "שלום",
+      "Nyob zoo", "Szia", "Halló", "Ndewo", "Halo", "Ciao", "こんにちは", "Сәлеметсіз бе", "សួស្តី",
+      "Mwaramutse", "안녕하세요", "Slav", "ສະບាយດີ", "Salve", "Sveika / Sveiks", "Sveiki", "Moien", "Salama",
+      "Selamat pagi", "Bongu", "Kia ora", "Сайн уу", "Niltze Tialli Pialli", "Ya’at’eeh",
+      "Hei", "Akkam", "سلام", "Cześć", "Olá", "ਸਤ ਸ੍ਰੀ ਅਕਾਲ", "Allianchu", "Bună", "Привет", "Talofa",
+      "Thobela", "Dumela", "Jambo", "Hallå",
+      "Ia Orana", "Lí-hó", "வணக்கம்", "สวัสดี", "Tashi Delek", "Mālō e lelei", "Avuxeni", "Merhaba", "Привіт",
+      "السلام عليكم", "Salom", "Xin chào", "Helo", "Molo", "Saluton", "Bon die", "Bon dia", "Kehan chhi",
+      "M'atchomaroon", "nuqneH", "Seethaaa-ssse-hathehhh-hathehhh-ayaeeh", "Rytsas", "A", "Aiya", "Kaltxì"
+    ];
+
+    // Text Scrambler Class
+    class TextScrambler {
+      constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________';
+        this.update = this.update.bind(this);
+      }
+      setText(newText) {
+        const oldText = this.el.innerText;
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise((resolve) => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+          const start = Math.floor(Math.random() * 15);
+          const end = start + Math.floor(Math.random() * 15);
+          this.queue.push({
+            from: oldText[i] || '',
+            to: newText[i] || '',
+            start,
+            end,
+            char: ''
+          });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+      }
+      update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+          if (this.frame >= end) {
+            complete++;
+            output += to;
+          } else if (this.frame >= start) {
+            if (!char || Math.random() < 0.28) {
+              char = this.randomChar();
+              this.queue[i].char = char;
+            }
+            output += `<span class="dud">${char}</span>`;
+          } else {
+            output += from;
+          }
+        }
+        this.el.innerHTML = output;
+        if (complete === this.queue.length) {
+          this.resolve();
+        } else {
+          this.frameRequest = requestAnimationFrame(this.update);
+          this.frame++;
+        }
+      }
+      randomChar() {
+        return this.chars[Math.floor(Math.random() * this.chars.length)];
+      }
+    }
+
+    // Initialize scramble on DOM content load
+    document.addEventListener("DOMContentLoaded", () => {
+      const el = document.getElementById("scrambleHello");
+      if (!el) return;
+      
+      // Filter greetings to lock content box size (max 8 characters to prevent layout shift)
+      const allowedHellos = hellos.filter(word => word.length <= 8);
+      
+      const scrambler = new TextScrambler(el);
+      let counter = 0;
+      let isHovered = false;
+
+      const next = () => {
+        if (isHovered) return;
+        counter = (counter + 1) % allowedHellos.length;
+        scrambler.setText(allowedHellos[counter]);
+      };
+
+      // Auto cycle every 2.0 seconds
+      let intervalId = setInterval(next, 2000);
+
+      // Trigger scramble on mouse hover
+      el.addEventListener("mouseenter", () => {
+        isHovered = true;
+        counter = Math.floor(Math.random() * allowedHellos.length);
+        scrambler.setText(allowedHellos[counter]);
+      });
+
+      el.addEventListener("mouseleave", () => {
+        isHovered = false;
+      });
+    });
+  </script>
+</body>
+</html>
