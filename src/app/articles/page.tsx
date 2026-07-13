@@ -16,6 +16,19 @@ export default function ArticlesPage() {
         <main style={{ display: "block" }}>
           <div className="essay-list">
             <div className="essay-item">
+              <div className="essay-meta">JULY 14, 2026 · AI TRUST & ORCHESTRATION</div>
+              <div className="essay-title-row">
+                <Link href="/blog/the-control-plane-is-not-in-control" className="essay-title-link">
+                  The Control Plane Is Not in Control
+                </Link>
+                <span className="redirect-icon" style={{ transform: "none" }}>→</span>
+              </div>
+              <p className="essay-excerpt">
+                Enterprise AI leaders (Karp, Srinivas, Nadella) converge on one prescription: enterprises must own their trust boundary, orchestration layer, and learning loop. This article traces what happens after that prescription is followed, proposing a new research field: agentic trust infrastructure.
+              </p>
+            </div>
+
+            <div className="essay-item">
               <div className="essay-meta">FEBRUARY 12, 2026 · AI STRATEGY & GEOPOLITICS</div>
               <div className="essay-title-row">
                 <Link href="/blog/beijing-is-not-racing-the-frontier" className="essay-title-link">
