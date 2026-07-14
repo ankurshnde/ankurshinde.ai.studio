@@ -463,18 +463,11 @@ export default function TheControlPlaneIsNotInControlPage() {
                 alt="HFT Slide" 
                 className="essay-hero-img"
               />
-              <div style={{ 
-                fontFamily: "var(--font-mono)", 
-                fontSize: "11px", 
-                color: "var(--muted)", 
-                marginTop: "8px", 
-                textAlign: "center",
-                textTransform: "uppercase",
-                letterSpacing: "0.05em"
-              }}>
-                Look at this another slide from Prof. Raskar. <strong>HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
-              </div>
             </div>
+
+            <p style={{ paddingLeft: "16px", borderLeft: "2.5px solid var(--border)", color: "var(--muted)", margin: "16px 0 var(--space-lg)" }}>
+              Look at this another slide from Prof. Raskar. <strong>HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
+            </p>
 
             <p>
               <Highlight category="ai-written">
