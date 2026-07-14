@@ -9,7 +9,7 @@ export default function TheControlPlaneIsNotInControlPage() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFloatingShareVisible, setIsFloatingShareVisible] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [highlightsActive, setHighlightsActive] = useState(false)
+  const [highlightsActive] = useState(true)
 
   const shareOnX = () => {
     const url = encodeURIComponent(window.location.href)
@@ -156,6 +156,14 @@ export default function TheControlPlaneIsNotInControlPage() {
       {/* Floating side card on desktop */}
       <div className="side-nav-container">
         <div className="side-index-card">
+          {/* Executive Summary in the left bar */}
+          <div className="side-index-category" style={{ marginBottom: "20px" }}>
+            <span className="side-index-cat-title">EXECUTIVE SUMMARY</span>
+            <p style={{ fontSize: "11px", lineHeight: "1.5", color: "var(--muted)", margin: "8px 0 0 0", textAlign: "justify", textTransform: "none", letterSpacing: "normal" }}>
+              Enterprise AI leaders (Karp, Srinivas, Nadella) converge on one prescription: enterprises must own their trust boundary, orchestration layer, and learning loop rather than surrender IP to model providers. This article traces what happens after that prescription is followed. First-order effect: firms become intelligence islands, sealed around their positional knowledge. Second-order effect: these islands must still trade — but only outputs can cross, not intelligence, and outputs of agent judgment work are hard to verify, price, and hold accountable. This creates a new research field: agentic trust infrastructure, built on five primitives — identity, authority, recourse, settlement, compliance. Three futures compete to provide it: service orgs (&quot;X for agents&quot;), A2A marketplaces, and open protocols — likely co-existing. Finance already built this stack once, for high-frequency trading; but HFT works inside one jurisdiction, and agents will trade across borders where no single rulebook holds. Conclusion: the reverse information paradox does not disappear — it moves. Whoever owns the window agents trade through owns the next control plane.
+            </p>
+          </div>
+
           {/* Group 1: CONTEXT */}
           <div className="side-index-category">
             <span className="side-index-cat-title">CONTEXT</span>
@@ -213,47 +221,6 @@ export default function TheControlPlaneIsNotInControlPage() {
             </div>
           </div>
 
-          {/* Group 4: AUTHORSHIP TOGGLE */}
-          <div className="side-index-category" style={{ marginTop: "20px", paddingTop: "16px", borderTop: "1.5px dashed var(--border)" }}>
-            <span className="side-index-cat-title">AUTHORSHIP</span>
-            <button 
-              onClick={() => setHighlightsActive(!highlightsActive)}
-              className="highlight-toggle-btn"
-              style={{
-                width: "100%",
-                fontFamily: "var(--font-mono)",
-                fontSize: "12px",
-                padding: "8px 12px",
-                border: "1.5px solid var(--accent)",
-                borderRadius: "4px",
-                backgroundColor: highlightsActive ? "var(--accent)" : "transparent",
-                color: highlightsActive ? "var(--background)" : "var(--foreground)",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                marginBottom: "12px",
-                textAlign: "center"
-              }}
-            >
-              {highlightsActive ? "Hide AI Highlights" : "See AI Highlights"}
-            </button>
-            {highlightsActive && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#F3EAD8", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "11px", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Original</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#E9E4F2", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "11px", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>AI-written</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#E2EFE4", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "11px", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.05em" }}>AI-improved</span>
-                </div>
-              </div>
-            )}
-          </div>
-
           {/* Side Share inside Card */}
           <div className="side-share">
             <span className="side-share-label">SHARE</span>
@@ -306,40 +273,6 @@ export default function TheControlPlaneIsNotInControlPage() {
 
           <h1 className="essay-page-title">The Control Plane Is Not in Control</h1>
 
-          {/* Interactive Author Highlights Legend and Switch for Mobile/Header */}
-          <div className="article-highlights-header-toggle" style={{ margin: "20px 0", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", padding: "16px", backgroundColor: "rgba(0,0,0,0.02)", borderRadius: "6px", border: "1px solid var(--border)" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#F3EAD8", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                <span style={{ fontSize: "12px", fontWeight: 500 }}>Original</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#E9E4F2", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                <span style={{ fontSize: "12px", fontWeight: 500 }}>AI-written</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <span style={{ width: "12px", height: "12px", borderRadius: "3px", backgroundColor: "#E2EFE4", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                <span style={{ fontSize: "12px", fontWeight: 500 }}>AI-improved</span>
-              </div>
-            </div>
-            <button 
-              onClick={() => setHighlightsActive(!highlightsActive)}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "12px",
-                padding: "6px 12px",
-                border: "1px solid var(--accent)",
-                borderRadius: "4px",
-                backgroundColor: highlightsActive ? "var(--accent)" : "transparent",
-                color: highlightsActive ? "var(--background)" : "var(--foreground)",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-            >
-              {highlightsActive ? "Hide AI authorship" : "See what was written by AI"}
-            </button>
-          </div>
-
           <div className="essay-content">
             <p>
               <strong>Executive Summary:</strong> Enterprise AI leaders (Karp, Srinivas, Nadella) converge on one prescription: enterprises must own their trust boundary, orchestration layer, and learning loop rather than surrender IP to model providers. This article traces what happens after that prescription is followed. First-order effect: firms become intelligence islands, sealed around their positional knowledge. Second-order effect: these islands must still trade — but only outputs can cross, not intelligence, and outputs of agent judgment work are hard to verify, price, and hold accountable. This creates a new research field: agentic trust infrastructure, built on five primitives — identity, authority, recourse, settlement, compliance. Three futures compete to provide it: service orgs (&quot;X for agents&quot;), A2A marketplaces, and open protocols — likely co-existing. Finance already built this stack once, for high-frequency trading; but HFT works inside one jurisdiction, and agents will trade across borders where no single rulebook holds. Conclusion: the reverse information paradox does not disappear — it moves. Whoever owns the window agents trade through owns the next control plane.
@@ -347,9 +280,9 @@ export default function TheControlPlaneIsNotInControlPage() {
 
             <p>Three tech leaders, talking the same point.</p>
 
-            <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }}>
-              <Highlight category="original">The control plane (for enterprises) is not in control.</Highlight>
-            </h2>
+            <p style={{ margin: "24px 0 var(--space-lg)" }}>
+              <Highlight category="original"><strong>The control plane (for enterprises) is not in control.</strong></Highlight>
+            </p>
 
             <p>Here is exact point (TL; DR) from Alex, Aravind &amp; Satya:</p>
 
@@ -377,8 +310,6 @@ export default function TheControlPlaneIsNotInControlPage() {
               </Highlight>
             </p>
 
-            <hr className="meta-divider" style={{ margin: "40px 0" }} />
-
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="islands">First-Order Effect: Intelligence Islands</h2>
 
             <p>
@@ -390,8 +321,6 @@ export default function TheControlPlaneIsNotInControlPage() {
                 It’s not that every firm will seal everything, general intelligence will stay pooled in frontier models. But every firm will seal what makes it different: pricing, strategy, client data, proprietary workflows. The island is forming but around the positional knowledge.
               </Highlight>
             </p>
-
-            <hr className="meta-divider" style={{ margin: "40px 0" }} />
 
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="challenges">Second-Order Effect: The Seams of Trade</h2>
 
@@ -414,16 +343,24 @@ export default function TheControlPlaneIsNotInControlPage() {
               {" "}I generated an image from GPT to visualize this:
             </p>
 
-            <figure className="essay-figure">
+            <div style={{ margin: "var(--space-lg) 0" }}>
               <img 
                 src="/images/3c1d6912-eb58-4c6f-abaf-0479d3998f9d.png" 
                 alt="Two sealed brains. One window. Five questions." 
-                className="essay-body-img"
+                className="essay-hero-img"
               />
-              <figcaption className="essay-figcaption">
+              <div style={{ 
+                fontFamily: "var(--font-mono)", 
+                fontSize: "11px", 
+                color: "var(--muted)", 
+                marginTop: "8px", 
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em"
+              }}>
                 <Highlight category="ai-written">Two sealed brains. One window. Five questions.</Highlight>
-              </figcaption>
-            </figure>
+              </div>
+            </div>
 
             <p>
               <Highlight category="original">
@@ -458,8 +395,6 @@ export default function TheControlPlaneIsNotInControlPage() {
               In the second-order world, verification is cheap for output that is verifiable in the real world. A code that passes a test suite. A calculation that u can re-run. etc. This is a value that will have self-verification.
             </p>
 
-            <hr className="meta-divider" style={{ margin: "40px 0" }} />
-
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="three-futures">Three Contending Futures</h2>
 
             <p>What agents unlock in this world is three futures:</p>
@@ -473,14 +408,24 @@ export default function TheControlPlaneIsNotInControlPage() {
               </Highlight>
             </p>
 
-            <figure className="essay-figure">
+            <div style={{ margin: "var(--space-lg) 0" }}>
               <img 
                 src="/images/raskarAgenticCommerceApr2026_page-0011.jpg" 
                 alt="Enterprise Internetworking - Slide by Prof. Raskar, MIT Media Lab" 
-                className="essay-body-img"
+                className="essay-hero-img"
               />
-              <figcaption className="essay-figcaption">Above slide from Prof. Raskar from MIT Media Lab communicates this future precisely.</figcaption>
-            </figure>
+              <div style={{ 
+                fontFamily: "var(--font-mono)", 
+                fontSize: "11px", 
+                color: "var(--muted)", 
+                marginTop: "8px", 
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em"
+              }}>
+                Above slide from Prof. Raskar from MIT Media Lab communicates this future precisely.
+              </div>
+            </div>
 
             <h3 style={{ fontSize: "1.4rem", margin: "28px 0 12px" }} id="future-2">
               Future Two: A2A Marketplaces
@@ -519,8 +464,6 @@ export default function TheControlPlaneIsNotInControlPage() {
               It's not one future we will see, but the co-existence of all three in some form: decentralized marketplaces, with &quot;X for agents&quot; orgs alongside open protocols.
             </p>
 
-            <hr className="meta-divider" style={{ margin: "40px 0" }} />
-
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="finance-hft">The Trust Stack: Lessons from High-Frequency Trading</h2>
 
             <p>
@@ -533,17 +476,25 @@ export default function TheControlPlaneIsNotInControlPage() {
               And here is the part that gives me the confidence that this stack is buildable: finance already built it once.
             </p>
 
-            <figure className="essay-figure">
+            <div style={{ margin: "var(--space-lg) 0" }}>
               <img 
                 src="/images/raskarAgenticCommerceApr2026_page-0012.jpg" 
                 alt="HFT Slide" 
-                className="essay-body-img"
+                className="essay-hero-img"
               />
-              <figcaption className="essay-figcaption">
+              <div style={{ 
+                fontFamily: "var(--font-mono)", 
+                fontSize: "11px", 
+                color: "var(--muted)", 
+                marginTop: "8px", 
+                textAlign: "center",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em"
+              }}>
                 Look at this another slide from Prof. Raskar. HFT is a working system{" "}
                 <strong>where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
-              </figcaption>
-            </figure>
+              </div>
+            </div>
 
             <p>
               <Highlight category="ai-written">
@@ -566,8 +517,6 @@ export default function TheControlPlaneIsNotInControlPage() {
                 That is the open research problem: how does trust infrastructure work when no single rulebook holds? A marketplace can internalize trust inside its walls. It cannot internalize a jurisdiction.
               </Highlight>
             </p>
-
-            <hr className="meta-divider" style={{ margin: "40px 0" }} />
 
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="closing">The Next Control Plane</h2>
 
@@ -616,9 +565,7 @@ export default function TheControlPlaneIsNotInControlPage() {
               </Highlight>
             </p>
 
-            <hr className="meta-divider" style={{ margin: "40px 0" }} id="author-note" />
-
-            <h2 style={{ fontSize: "1.6rem", margin: "32px 0 16px" }}>A note on how this was written</h2>
+            <h2 style={{ fontSize: "1.6rem", margin: "32px 0 16px" }} id="author-note">A note on how this was written</h2>
 
             <p>
               The core arguments here are mine, developed through my research and thinking.
@@ -626,16 +573,13 @@ export default function TheControlPlaneIsNotInControlPage() {
             <p>
               I used AI (Claude) as a thinking partner — to stress-test the reasoning, sharpen the structure, and add supporting points. Some passages were written by the AI and kept because they said it better; they are marked. Some grammar imperfections are left as they are, to preserve the original voice.
             </p>
-            <p>
-              The button below shows exactly what was original, what was improved, and what was AI-written.
-            </p>
 
-            {/* Main Interactive Authorship Attribution Toggle and Legend */}
+            {/* Main Interactive Authorship Attribution Legend only (No button) */}
             <div className="author-auth-toggle-container" style={{ margin: "40px 0", padding: "24px", border: "1.5px dashed var(--border)", borderRadius: "8px", backgroundColor: "rgba(0,0,0,0.02)", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-mono)", fontSize: "13px", marginBottom: "16px", color: "var(--muted)", letterSpacing: "0.05em" }}>
                 AUTHORSHIP ATTRIBUTION LEGEND
               </p>
-              <div style={{ display: "flex", justifyContent: "center", gap: "24px", flexWrap: "wrap", marginBottom: "24px" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "24px", flexWrap: "wrap" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <span style={{ width: "16px", height: "16px", borderRadius: "4px", backgroundColor: "#F3EAD8", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
                   <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--foreground)" }}>Original (Ankur's ideas)</span>
@@ -649,24 +593,6 @@ export default function TheControlPlaneIsNotInControlPage() {
                   <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--foreground)" }}>AI-improved (Refined w/ Claude)</span>
                 </div>
               </div>
-              <button 
-                onClick={() => setHighlightsActive(!highlightsActive)}
-                className="highlight-toggle-btn"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "13px",
-                  padding: "10px 20px",
-                  border: "1.5px solid var(--accent)",
-                  borderRadius: "4px",
-                  backgroundColor: highlightsActive ? "var(--accent)" : "transparent",
-                  color: highlightsActive ? "var(--background)" : "var(--foreground)",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease",
-                  outline: "none"
-                }}
-              >
-                {highlightsActive ? "Hide AI authorship" : "See what was written by AI"}
-              </button>
             </div>
           </div>
         </main>
