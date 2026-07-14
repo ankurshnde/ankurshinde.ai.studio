@@ -24,12 +24,6 @@ export function PhotoFrame() {
             className="base-img"
             id="baseImage"
           />
-          <img
-            src="/ankur_stippled.png"
-            alt="Ankur Shinde Stippled"
-            className="stipple-overlay"
-            id="stippleImage"
-          />
         </div>
       </div>
     </div>

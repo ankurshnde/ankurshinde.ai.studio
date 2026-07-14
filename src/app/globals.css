@@ -317,51 +317,28 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.28s ease, filter 0.28s ease, mix-blend-mode 0.28s ease;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease, filter 0.28s ease;
 }
 
 .base-img {
   z-index: 1;
-  filter: brightness(1.02) contrast(0.98);
-  opacity: 0.95;
+  filter: brightness(1.0) contrast(1.0);
+  opacity: 1;
   mix-blend-mode: normal;
 }
 
-.stipple-overlay {
-  z-index: 2;
-  opacity: 0.55;
-  mix-blend-mode: multiply;
-}
-
 .dark .base-img {
-  filter: brightness(0.65) contrast(1.0);
-}
-.dark .stipple-overlay {
-  filter: invert(1);
-  mix-blend-mode: screen;
-  opacity: 0.65;
+  filter: brightness(0.85) contrast(1.0);
 }
 
-/* Duotone image hovers */
+/* Premium image zoom hovers */
 .photo-frame:hover .base-img {
-  opacity: 1;
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) brightness(1.05) contrast(1.15);
-}
-.photo-frame:hover .stipple-overlay {
-  opacity: 0.25;
-  filter: none;
-  mix-blend-mode: multiply;
+  transform: scale(1.05);
+  filter: brightness(1.03) contrast(1.02);
 }
 .dark .photo-frame:hover .base-img {
-  filter: grayscale(100%) brightness(1.05) contrast(1.15);
-  opacity: 1;
-  mix-blend-mode: multiply;
-}
-.dark .photo-frame:hover .stipple-overlay {
-  filter: none;
-  mix-blend-mode: multiply;
-  opacity: 0.25;
+  transform: scale(1.05);
+  filter: brightness(0.95) contrast(1.02);
 }
 
 @media (max-width: 900px) {
