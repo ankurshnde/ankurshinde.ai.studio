@@ -1196,3 +1196,117 @@ body.dark-mode .floating-dock-bar {
     display: none !important;
   }
 }
+
+/* ---------- Redesigned Articles Table ---------- */
+.articles-table {
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-xl);
+  width: 100%;
+}
+
+.article-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-md) 0;
+  text-decoration: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: inherit;
+}
+
+/* Fade out rows that are not hovered when one is active */
+.articles-table.has-hovered .article-row:not(.hovered) {
+  opacity: 0.25;
+}
+
+/* Year column */
+.article-year {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  width: 80px;
+  flex-shrink: 0;
+  font-weight: 300;
+}
+
+/* Title column */
+.article-title-col {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--foreground);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: color 0.25s ease;
+}
+
+.article-row:hover .article-title-col {
+  color: var(--accent);
+}
+
+body.dark-mode .article-row:hover .article-title-col {
+  color: #FFFFFF;
+}
+
+/* Tag/Category column */
+.article-tag {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: right;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+/* Floating preview image */
+.article-hover-preview {
+  position: fixed;
+  width: 180px;
+  height: 110px;
+  pointer-events: none;
+  z-index: 1000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+  background-color: var(--background);
+  transform: translate3d(0, 0, 0);
+  animation: previewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes previewFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .article-row {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    padding: var(--space-sm) 0;
+  }
+  .article-year {
+    width: 60px;
+  }
+  .article-title-col {
+    font-size: 1rem;
+    width: calc(100% - 70px);
+  }
+  .article-tag {
+    width: 100%;
+    text-align: left;
+    margin-left: 60px;
+    font-size: 0.75rem;
+  }
+  .article-hover-preview {
+    display: none !important; /* Hide image hover popups on touch devices */
+  }
+}

@@ -1,112 +1,169 @@
-import React from "react"
-import { Metadata } from "next"
+"use client"
+
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 
-export const metadata: Metadata = {
-  title: "Articles",
-}
+const articles = [
+  {
+    id: 1,
+    year: "2026",
+    title: "The Control Plane Is Not in Control",
+    category: "ai trust",
+    href: "/blog/the-control-plane-is-not-in-control",
+    image: "/images/holding_brain.png",
+    isExternal: false,
+  },
+  {
+    id: 2,
+    year: "2026",
+    title: "Beijing is Not Racing the Frontier: Anatomy of China's State of AI",
+    category: "ai strategy",
+    href: "/blog/beijing-is-not-racing-the-frontier",
+    image: "/images/hero.jpg",
+    isExternal: false,
+  },
+  {
+    id: 3,
+    year: "2026",
+    title: "AI + Digital Public Infrastructure: Architecting Intelligence as a Public Utility",
+    category: "public utility",
+    href: "https://ankurshinde.medium.com/ai-digital-public-infrastructure-architecting-intelligence-as-a-public-utility-0d7cc6245450",
+    image: "/images/image_1.png",
+    isExternal: true,
+  },
+  {
+    id: 4,
+    year: "2025",
+    title: "Two Visions, One Future? Situating Project NANDA Within OpenAI’s 5 Levels of AI Progress",
+    category: "ai progress",
+    href: "https://ankurshinde.medium.com/two-visions-one-future-situating-project-nanda-within-openais-5-levels-of-ai-progress-d839a7c9bef9",
+    image: "/images/image_2.png",
+    isExternal: true,
+  },
+  {
+    id: 5,
+    year: "2025",
+    title: "NANDA: The Protocol for Decentralized AI Agent Collaboration",
+    category: "decentralized",
+    href: "https://ankurshinde.medium.com/nanda-the-protocol-for-decentralized-ai-agent-collaboration-3f9fd9fbae5a",
+    image: "/images/raskarAgenticCommerceApr2026_page-0011.jpg",
+    isExternal: true,
+  },
+  {
+    id: 6,
+    year: "2025",
+    title: "Before You Build Another AI Agent, You Need to Read This",
+    category: "agent systems",
+    href: "https://ankurshinde.medium.com/before-you-build-another-ai-agent-you-need-to-read-this-c91ff0fde18b",
+    image: "/images/raskarAgenticCommerceApr2026_page-0012.jpg",
+    isExternal: true,
+  },
+  {
+    id: 7,
+    year: "2025",
+    title: "NANDA Index FAQ: Contextualizing with Linux Foundation’s A2A Agent",
+    category: "index faq",
+    href: "https://ankurshinde.medium.com/nanda-index-faq-contextualizing-with-linux-foundations-a2a-agent-ff1a0d8fa9ae",
+    image: "/images/hero.jpg",
+    isExternal: true,
+  },
+  {
+    id: 8,
+    year: "2025",
+    title: "When AI Can Attack, Only AI Can Defend",
+    category: "cybersecurity",
+    href: "https://ankurshinde.medium.com/when-ai-can-attack-only-ai-can-defend-5c80ffdb184e",
+    image: "/images/holding_brain.png",
+    isExternal: true,
+  },
+]
 
 export default function ArticlesPage() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [windowWidth, setWindowWidth] = useState(1200)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth)
+      const handleResize = () => setWindowWidth(window.innerWidth)
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY })
+  }
+
+  const isRightHalf = mousePos.x > windowWidth / 2
+  const previewLeft = isRightHalf ? mousePos.x - 200 : mousePos.x + 20
+
   return (
     <>
       <Navbar />
 
-      <div className="wrap" style={{ marginTop: "32px" }}>
+      <div className="wrap" style={{ marginTop: "40px" }} onMouseMove={handleMouseMove}>
         <main style={{ display: "block" }}>
-          <div className="essay-list">
-            <div className="essay-item">
-              <div className="essay-meta">JULY 14, 2026 · AI TRUST & ORCHESTRATION</div>
-              <div className="essay-title-row">
-                <Link href="/blog/the-control-plane-is-not-in-control" className="essay-title-link">
-                  The Control Plane Is Not in Control
+          <div className={`articles-table ${hoveredIndex !== null ? "has-hovered" : ""}`}>
+            {articles.map((article, index) => {
+              const isHovered = hoveredIndex === index
+              const content = (
+                <>
+                  <span className="article-year">{article.year}</span>
+                  <span className="article-title-col">{article.title}</span>
+                  <span className="article-tag">{article.category}</span>
+                </>
+              )
+
+              if (article.isExternal) {
+                return (
+                  <a
+                    key={article.id}
+                    href={article.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`article-row ${isHovered ? "hovered" : ""}`}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {content}
+                  </a>
+                )
+              }
+
+              return (
+                <Link
+                  key={article.id}
+                  href={article.href}
+                  className={`article-row ${isHovered ? "hovered" : ""}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {content}
                 </Link>
-                <span className="redirect-icon" style={{ transform: "none" }}>→</span>
-              </div>
-              <p className="essay-excerpt">
-                Enterprise AI leaders (Karp, Srinivas, Nadella) converge on one prescription: enterprises must own their trust boundary, orchestration layer, and learning loop. This article traces what happens after that prescription is followed, proposing a new research field: agentic trust infrastructure.
-              </p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">FEBRUARY 12, 2026 · AI STRATEGY & GEOPOLITICS</div>
-              <div className="essay-title-row">
-                <Link href="/blog/beijing-is-not-racing-the-frontier" className="essay-title-link">
-                  Beijing is Not Racing the Frontier: Anatomy of China's State of AI
-                </Link>
-                <span className="redirect-icon" style={{ transform: "none" }}>→</span>
-              </div>
-              <p className="essay-excerpt">China is building a vertically aligned AI stack—from energy and compute to data, models, orchestration, and distribution—designed for deployment coherence rather than frontier performance.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">JANUARY 28, 2026 · PUBLIC INFRASTRUCTURE</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/ai-digital-public-infrastructure-architecting-intelligence-as-a-public-utility-0d7cc6245450" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  AI + Digital Public Infrastructure: Architecting Intelligence as a Public Utility
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">How combining Artificial Intelligence with Digital Public Infrastructure (DPI) can optimize both delivery and decisions at a population scale.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">AUGUST 2, 2025 · AI STRATEGY</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/two-visions-one-future-situating-project-nanda-within-openais-5-levels-of-ai-progress-d839a7c9bef9" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  Two Visions, One Future? Situating Project NANDA Within OpenAI’s 5 Levels of AI Progress
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Contextualizing decentralized agent networks within major AI progress levels. Analyzing the divergence between centralized labs and open-source coordination layers.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">JULY 16, 2025 · DECENTRALIZED INFRASTRUCTURE</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/nanda-the-protocol-for-decentralized-ai-agent-collaboration-3f9fd9fbae5a" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  NANDA: The Protocol for Decentralized AI Agent Collaboration
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Proposing a foundational open-source protocol stack for agent identity, trust-based routing, and decentralized economic incentives without centralized gatekeepers.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">JULY 8, 2025 · AGENT SYSTEMS</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/before-you-build-another-ai-agent-you-need-to-read-this-c91ff0fde18b" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  Before You Build Another AI Agent, You Need to Read This
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Why standalone AI agents are bound to hit integration walls. A guide on transitioning from isolated task execution models to interoperable agent-to-agent architectures.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">JULY 4, 2025 · DECENTRALIZED INDEX</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/nanda-index-faq-contextualizing-with-linux-foundations-a2a-agent-ff1a0d8fa9ae" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  NANDA Index FAQ: Contextualizing with Linux Foundation’s A2A Agent
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Frequently asked questions about the NANDA Index, detailing how it works alongside protocols like Google's A2A and Anthropic's MCP.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">MAY 27, 2025 · CYBERSECURITY</div>
-              <div className="essay-title-row">
-                <a href="https://ankurshinde.medium.com/when-ai-can-attack-only-ai-can-defend-5c80ffdb184e" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  When AI Can Attack, Only AI Can Defend
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Securing an agentic internet. Explaining why traditional human-in-the-loop security architectures fail against coordinated, automated agent attacks.</p>
-            </div>
+              )
+            })}
           </div>
         </main>
       </div>
+
+      {hoveredIndex !== null && articles[hoveredIndex].image && (
+        <div
+          className="article-hover-preview"
+          style={{
+            top: mousePos.y + 15,
+            left: previewLeft,
+          }}
+        >
+          <img
+            src={articles[hoveredIndex].image}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </div>
+      )}
     </>
   )
 }
