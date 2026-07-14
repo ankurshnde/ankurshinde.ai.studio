@@ -9,7 +9,6 @@ export default function TheControlPlaneIsNotInControlPage() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFloatingShareVisible, setIsFloatingShareVisible] = useState(false)
   const [copied, setCopied] = useState(false)
-  const [highlightsActive] = useState(true)
 
   const shareOnX = () => {
     const url = encodeURIComponent(window.location.href)
@@ -92,7 +91,7 @@ export default function TheControlPlaneIsNotInControlPage() {
   }, [])
 
   const progressDots = [
-    { label: "INTRO", id: "header" },
+    { label: "EXECUTIVE SUMMARY", id: "header" },
     { label: "ISLANDS", id: "islands" },
     { label: "CHALLENGES", id: "challenges" },
     { label: "THREE FUTURES", id: "three-futures" },
@@ -101,29 +100,9 @@ export default function TheControlPlaneIsNotInControlPage() {
     { label: "AUTHOR NOTE", id: "author-note" },
   ]
 
-  // Highlight helper component
-  const Highlight = ({ category, children }: { category: "original" | "ai-written" | "ai-improved"; children: React.ReactNode }) => {
-    const getBgColor = () => {
-      if (!highlightsActive) return "transparent"
-      switch (category) {
-        case "original": return "#F3EAD8" // light warm sand
-        case "ai-written": return "#E9E4F2" // light lavender
-        case "ai-improved": return "#E2EFE4" // light mint green
-      }
-    }
-
-    return (
-      <span
-        style={{
-          backgroundColor: getBgColor(),
-          transition: "background-color 0.3s ease",
-          padding: "2px 4px",
-          borderRadius: "2px",
-        }}
-      >
-        {children}
-      </span>
-    )
+  // Highlight helper component (no-op, highlights removed)
+  const Highlight = ({ children }: { category?: string; children: React.ReactNode }) => {
+    return <>{children}</>
   }
 
   return (
@@ -156,14 +135,6 @@ export default function TheControlPlaneIsNotInControlPage() {
       {/* Floating side card on desktop */}
       <div className="side-nav-container">
         <div className="side-index-card">
-          {/* Executive Summary in the left bar */}
-          <div className="side-index-category" style={{ marginBottom: "20px" }}>
-            <span className="side-index-cat-title">EXECUTIVE SUMMARY</span>
-            <p style={{ fontSize: "11px", lineHeight: "1.5", color: "var(--muted)", margin: "8px 0 0 0", textAlign: "justify", textTransform: "none", letterSpacing: "normal" }}>
-              Enterprise AI leaders (Karp, Srinivas, Nadella) converge on one prescription: enterprises must own their trust boundary, orchestration layer, and learning loop rather than surrender IP to model providers. This article traces what happens after that prescription is followed. First-order effect: firms become intelligence islands, sealed around their positional knowledge. Second-order effect: these islands must still trade — but only outputs can cross, not intelligence, and outputs of agent judgment work are hard to verify, price, and hold accountable. This creates a new research field: agentic trust infrastructure, built on five primitives — identity, authority, recourse, settlement, compliance. Three futures compete to provide it: service orgs (&quot;X for agents&quot;), A2A marketplaces, and open protocols — likely co-existing. Finance already built this stack once, for high-frequency trading; but HFT works inside one jurisdiction, and agents will trade across borders where no single rulebook holds. Conclusion: the reverse information paradox does not disappear — it moves. Whoever owns the window agents trade through owns the next control plane.
-            </p>
-          </div>
-
           {/* Group 1: CONTEXT */}
           <div className="side-index-category">
             <span className="side-index-cat-title">CONTEXT</span>
@@ -171,7 +142,7 @@ export default function TheControlPlaneIsNotInControlPage() {
               className={`side-index-item ${activeSection === "header" ? "active" : ""}`} 
               onClick={() => scrollToSection("header")}
             >
-              <span className="index-title">INTRO</span>
+              <span className="index-title">EXECUTIVE SUMMARY</span>
             </div>
             <div 
               className={`side-index-item ${activeSection === "islands" ? "active" : ""}`} 
@@ -573,27 +544,6 @@ export default function TheControlPlaneIsNotInControlPage() {
             <p>
               I used AI (Claude) as a thinking partner — to stress-test the reasoning, sharpen the structure, and add supporting points. Some passages were written by the AI and kept because they said it better; they are marked. Some grammar imperfections are left as they are, to preserve the original voice.
             </p>
-
-            {/* Main Interactive Authorship Attribution Legend only (No button) */}
-            <div className="author-auth-toggle-container" style={{ margin: "40px 0", padding: "24px", border: "1.5px dashed var(--border)", borderRadius: "8px", backgroundColor: "rgba(0,0,0,0.02)", textAlign: "center" }}>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "13px", marginBottom: "16px", color: "var(--muted)", letterSpacing: "0.05em" }}>
-                AUTHORSHIP ATTRIBUTION LEGEND
-              </p>
-              <div style={{ display: "flex", justifyContent: "center", gap: "24px", flexWrap: "wrap" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "16px", height: "16px", borderRadius: "4px", backgroundColor: "#F3EAD8", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--foreground)" }}>Original (Ankur's ideas)</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "16px", height: "16px", borderRadius: "4px", backgroundColor: "#E9E4F2", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--foreground)" }}>AI-written (Claude)</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <span style={{ width: "16px", height: "16px", borderRadius: "4px", backgroundColor: "#E2EFE4", display: "inline-block", border: "1px solid rgba(0,0,0,0.08)" }} />
-                  <span style={{ fontSize: "13px", fontWeight: 500, color: "var(--foreground)" }}>AI-improved (Refined w/ Claude)</span>
-                </div>
-              </div>
-            </div>
           </div>
         </main>
       </div>
