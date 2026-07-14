@@ -7,8 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-ibm-plex-mono), monospace;
-  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-sans: var(--font-manrope), sans-serif;
+  --font-mono: var(--font-manrope), sans-serif;
   --font-serif: var(--font-instrument-serif), serif;
   --font-heading: var(--font-instrument-serif), serif;
   
@@ -54,8 +54,8 @@
   --cipher: #A0B8D0;
   --chalk: #F7F7F5;
   --font-display: var(--font-instrument-serif), serif;
-  --font-body: var(--font-ibm-plex-mono), monospace;
-  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-body: var(--font-manrope), sans-serif;
+  --font-mono: var(--font-manrope), sans-serif;
 
   --space-xs:  4px;
   --space-sm:  8px;
@@ -1275,22 +1275,29 @@ body.dark-mode .floating-dock-bar {
 .article-row-preview {
   position: absolute;
   top: 50%;
-  right: 220px;
+  right: 210px; /* Aligned immediately to the left of the category label */
   transform: translateY(-50%) scale(0.92);
   width: 240px;
   height: 150px;
   pointer-events: none;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.14),
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(0, 0, 0, 0.03);
-  background-color: var(--background);
+    0 10px 30px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.06);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-row-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Do not cut or crop */
 }
 
 .article-row:hover .article-row-preview {

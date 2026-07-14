@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Imbue, IBM_Plex_Mono, Geist, Instrument_Serif } from "next/font/google";
+import { Imbue, Manrope, Geist, Instrument_Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BodyClassManager } from "@/components/body-class-manager";
 import "./globals.css";
@@ -9,10 +9,10 @@ const imbue = Imbue({
   subsets: ["latin"],
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const geist = Geist({
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${imbue.variable} ${ibmPlexMono.variable} ${geist.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${imbue.variable} ${manrope.variable} ${geist.variable} ${instrumentSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
