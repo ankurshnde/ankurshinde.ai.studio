@@ -1269,6 +1269,7 @@ body.dark-mode .floating-dock-bar {
   text-align: right;
   width: 200px;
   flex-shrink: 0;
+  font-weight: 600;
 }
 
 /* Row-aligned preview image card with rounded corners and deep shadow */
