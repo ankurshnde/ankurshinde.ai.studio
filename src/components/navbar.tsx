@@ -8,6 +8,11 @@ import { Menu, X } from "lucide-react"
 export function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Scroll lock & open class helper when mobile menu overlay is active
   useEffect(() => {
@@ -72,46 +77,48 @@ export function Navbar() {
       </div>
 
       {/* Mobile Full Screen Menu Overlay (Always mounted to enable CSS transitions) */}
-      <div className={`mobile-menu-overlay mobile-only ${isOpen ? "active" : ""}`}>
-        {/* Overlay Header with Brand & Close Button */}
-        <div className="mobile-overlay-header">
-          <Link href="/" className="mobile-brand-link" onClick={() => setIsOpen(false)}>
-            Ankur
-          </Link>
-          <button 
-            className="mobile-menu-toggle" 
-            onClick={() => setIsOpen(false)}
-            aria-label="Close menu"
-          >
-            <X size={20} />
-          </button>
-        </div>
+      {mounted && (
+        <div className={`mobile-menu-overlay mobile-only ${isOpen ? "active" : ""}`}>
+          {/* Overlay Header with Brand & Close Button */}
+          <div className="mobile-overlay-header">
+            <Link href="/" className="mobile-brand-link" onClick={() => setIsOpen(false)}>
+              Ankur
+            </Link>
+            <button 
+              className="mobile-menu-toggle" 
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-        {/* Centered Large Navigation Links */}
-        <div className="mobile-menu-content">
-          <Link 
-            href="/publications" 
-            className={`mobile-menu-item ${pathname === "/publications" ? "active" : ""}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Publications
-          </Link>
-          <Link 
-            href="/articles" 
-            className={`mobile-menu-item ${pathname === "/articles" || pathname.startsWith("/blog") ? "active" : ""}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Articles
-          </Link>
-          <Link 
-            href="/connect" 
-            className={`mobile-menu-item ${pathname === "/connect" ? "active" : ""}`}
-            onClick={() => setIsOpen(false)}
-          >
-            Connect
-          </Link>
+          {/* Centered Large Navigation Links */}
+          <div className="mobile-menu-content">
+            <Link 
+              href="/publications" 
+              className={`mobile-menu-item ${pathname === "/publications" ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Publications
+            </Link>
+            <Link 
+              href="/articles" 
+              className={`mobile-menu-item ${pathname === "/articles" || pathname.startsWith("/blog") ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Articles
+            </Link>
+            <Link 
+              href="/connect" 
+              className={`mobile-menu-item ${pathname === "/connect" ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Connect
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }

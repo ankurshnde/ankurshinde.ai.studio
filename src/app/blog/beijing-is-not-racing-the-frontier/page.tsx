@@ -9,6 +9,11 @@ export default function BeijingIsNotRacingTheFrontierPage() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFloatingShareVisible, setIsFloatingShareVisible] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const shareOnX = () => {
     const url = encodeURIComponent(window.location.href)
@@ -124,121 +129,125 @@ export default function BeijingIsNotRacingTheFrontierPage() {
       </div>
 
       {/* Viewport edge progress dashes for tablet/mobile */}
-      <div className="viewport-progress-indicator">
-        {progressDots.map(dot => (
-          <div
-            key={dot.id}
-            className={`progress-dot ${activeSection === dot.id ? "active" : ""}`}
-            onClick={() => scrollToSection(dot.id)}
-            data-target={dot.id}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="viewport-progress-indicator">
+          {progressDots.map(dot => (
+            <div
+              key={dot.id}
+              className={`progress-dot ${activeSection === dot.id ? "active" : ""}`}
+              onClick={() => scrollToSection(dot.id)}
+              data-target={dot.id}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Floating side card on desktop */}
-      <div className="side-nav-container">
-        <div className="side-index-card">
-          {/* Group 1: CONTEXT */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">CONTEXT</span>
-            <div 
-              className={`side-index-item ${activeSection === "header" ? "active" : ""}`} 
-              onClick={() => scrollToSection("header")}
-            >
-              <span className="index-title">INTRO</span>
+      {mounted && (
+        <div className="side-nav-container">
+          <div className="side-index-card">
+            {/* Group 1: CONTEXT */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">CONTEXT</span>
+              <div 
+                className={`side-index-item ${activeSection === "header" ? "active" : ""}`} 
+                onClick={() => scrollToSection("header")}
+              >
+                <span className="index-title">INTRO</span>
+              </div>
             </div>
-          </div>
 
-          {/* Group 2: THE SIX LAYERS */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">THE SIX LAYERS</span>
-            <div 
-              className={`side-index-item ${activeSection === "layer-1" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-1")}
-            >
-              <span className="index-title">L1: SUBSTRATE</span>
+            {/* Group 2: THE SIX LAYERS */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">THE SIX LAYERS</span>
+              <div 
+                className={`side-index-item ${activeSection === "layer-1" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-1")}
+              >
+                <span className="index-title">L1: SUBSTRATE</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "layer-2" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-2")}
+              >
+                <span className="index-title">L2: COMPUTE</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "layer-3" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-3")}
+              >
+                <span className="index-title">L3: DATA</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "layer-4" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-4")}
+              >
+                <span className="index-title">L4: MODELS</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "layer-5" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-5")}
+              >
+                <span className="index-title">L5: ORCHESTRATION</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "layer-6" ? "active" : ""}`} 
+                onClick={() => scrollToSection("layer-6")}
+              >
+                <span className="index-title">L6: DISTRIBUTION</span>
+              </div>
             </div>
-            <div 
-              className={`side-index-item ${activeSection === "layer-2" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-2")}
-            >
-              <span className="index-title">L2: COMPUTE</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "layer-3" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-3")}
-            >
-              <span className="index-title">L3: DATA</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "layer-4" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-4")}
-            >
-              <span className="index-title">L4: MODELS</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "layer-5" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-5")}
-            >
-              <span className="index-title">L5: ORCHESTRATION</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "layer-6" ? "active" : ""}`} 
-              onClick={() => scrollToSection("layer-6")}
-            >
-              <span className="index-title">L6: DISTRIBUTION</span>
-            </div>
-          </div>
 
-          {/* Group 3: CONCLUSIONS */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">CONCLUSIONS</span>
-            <div 
-              className={`side-index-item ${activeSection === "add-up" ? "active" : ""}`} 
-              onClick={() => scrollToSection("add-up")}
-            >
-              <span className="index-title">SUMMARY</span>
+            {/* Group 3: CONCLUSIONS */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">CONCLUSIONS</span>
+              <div 
+                className={`side-index-item ${activeSection === "add-up" ? "active" : ""}`} 
+                onClick={() => scrollToSection("add-up")}
+              >
+                <span className="index-title">SUMMARY</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "decide" ? "active" : ""}`} 
+                onClick={() => scrollToSection("decide")}
+              >
+                <span className="index-title">DECISION</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "caveats" ? "active" : ""}`} 
+                onClick={() => scrollToSection("caveats")}
+              >
+                <span className="index-title">CAVEATS</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "references" ? "active" : ""}`} 
+                onClick={() => scrollToSection("references")}
+              >
+                <span className="index-title">REFERENCES</span>
+              </div>
             </div>
-            <div 
-              className={`side-index-item ${activeSection === "decide" ? "active" : ""}`} 
-              onClick={() => scrollToSection("decide")}
-            >
-              <span className="index-title">DECISION</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "caveats" ? "active" : ""}`} 
-              onClick={() => scrollToSection("caveats")}
-            >
-              <span className="index-title">CAVEATS</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "references" ? "active" : ""}`} 
-              onClick={() => scrollToSection("references")}
-            >
-              <span className="index-title">REFERENCES</span>
-            </div>
-          </div>
 
-          {/* Side Share inside Card */}
-          <div className="side-share">
-            <span className="side-share-label">SHARE</span>
-            <div className="side-share-buttons">
-              <button onClick={shareOnX} className="social-share-btn" aria-label="Share on X">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </button>
-              <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-              </button>
-              <div className="copy-tooltip-container">
-                <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            {/* Side Share inside Card */}
+            <div className="side-share">
+              <span className="side-share-label">SHARE</span>
+              <div className="side-share-buttons">
+                <button onClick={shareOnX} className="social-share-btn" aria-label="Share on X">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </button>
-                <span className={`copy-tooltip ${copied ? "visible" : ""}`}>Link copied!</span>
+                <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
+                </button>
+                <div className="copy-tooltip-container">
+                  <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  </button>
+                  <span className={`copy-tooltip ${copied ? "visible" : ""}`}>Link copied!</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="container essay-container">
         <main id="intro" style={{ display: "block" }}>
@@ -264,7 +273,7 @@ export default function BeijingIsNotRacingTheFrontierPage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </button>
               <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
               </button>
               <div className="copy-tooltip-container">
                 <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
@@ -394,7 +403,7 @@ export default function BeijingIsNotRacingTheFrontierPage() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </button>
               <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
               </button>
               <div className="copy-tooltip-container">
                 <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
@@ -417,7 +426,7 @@ export default function BeijingIsNotRacingTheFrontierPage() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </button>
         <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
         </button>
         <div className="copy-tooltip-container">
           <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">

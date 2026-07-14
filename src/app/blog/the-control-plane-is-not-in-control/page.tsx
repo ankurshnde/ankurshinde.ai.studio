@@ -9,6 +9,11 @@ export default function TheControlPlaneIsNotInControlPage() {
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFloatingShareVisible, setIsFloatingShareVisible] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const shareOnX = () => {
     const url = encodeURIComponent(window.location.href)
@@ -121,97 +126,101 @@ export default function TheControlPlaneIsNotInControlPage() {
       </div>
 
       {/* Viewport edge progress dashes for tablet/mobile */}
-      <div className="viewport-progress-indicator">
-        {progressDots.map(dot => (
-          <div
-            key={dot.id}
-            className={`progress-dot ${activeSection === dot.id ? "active" : ""}`}
-            onClick={() => scrollToSection(dot.id)}
-            data-target={dot.id}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="viewport-progress-indicator">
+          {progressDots.map(dot => (
+            <div
+              key={dot.id}
+              className={`progress-dot ${activeSection === dot.id ? "active" : ""}`}
+              onClick={() => scrollToSection(dot.id)}
+              data-target={dot.id}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Floating side card on desktop */}
-      <div className="side-nav-container">
-        <div className="side-index-card">
-          {/* Group 1: CONTEXT */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">CONTEXT</span>
-            <div 
-              className={`side-index-item ${activeSection === "header" ? "active" : ""}`} 
-              onClick={() => scrollToSection("header")}
-            >
-              <span className="index-title">EXECUTIVE SUMMARY</span>
+      {mounted && (
+        <div className="side-nav-container">
+          <div className="side-index-card">
+            {/* Group 1: CONTEXT */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">CONTEXT</span>
+              <div 
+                className={`side-index-item ${activeSection === "header" ? "active" : ""}`} 
+                onClick={() => scrollToSection("header")}
+              >
+                <span className="index-title">EXECUTIVE SUMMARY</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "islands" ? "active" : ""}`} 
+                onClick={() => scrollToSection("islands")}
+              >
+                <span className="index-title">ISLANDS</span>
+              </div>
             </div>
-            <div 
-              className={`side-index-item ${activeSection === "islands" ? "active" : ""}`} 
-              onClick={() => scrollToSection("islands")}
-            >
-              <span className="index-title">ISLANDS</span>
-            </div>
-          </div>
 
-          {/* Group 2: INTER-AGENT COMMERCE */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">INTER-AGENT COMMERCE</span>
-            <div 
-              className={`side-index-item ${activeSection === "challenges" ? "active" : ""}`} 
-              onClick={() => scrollToSection("challenges")}
-            >
-              <span className="index-title">CHALLENGES</span>
+            {/* Group 2: INTER-AGENT COMMERCE */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">INTER-AGENT COMMERCE</span>
+              <div 
+                className={`side-index-item ${activeSection === "challenges" ? "active" : ""}`} 
+                onClick={() => scrollToSection("challenges")}
+              >
+                <span className="index-title">CHALLENGES</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "three-futures" ? "active" : ""}`} 
+                onClick={() => scrollToSection("three-futures")}
+              >
+                <span className="index-title">THREE FUTURES</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "finance-hft" ? "active" : ""}`} 
+                onClick={() => scrollToSection("finance-hft")}
+              >
+                <span className="index-title">FINANCE & HFT</span>
+              </div>
             </div>
-            <div 
-              className={`side-index-item ${activeSection === "three-futures" ? "active" : ""}`} 
-              onClick={() => scrollToSection("three-futures")}
-            >
-              <span className="index-title">THREE FUTURES</span>
-            </div>
-            <div 
-              className={`side-index-item ${activeSection === "finance-hft" ? "active" : ""}`} 
-              onClick={() => scrollToSection("finance-hft")}
-            >
-              <span className="index-title">FINANCE & HFT</span>
-            </div>
-          </div>
 
-          {/* Group 3: OUTLOOK */}
-          <div className="side-index-category">
-            <span className="side-index-cat-title">OUTLOOK</span>
-            <div 
-              className={`side-index-item ${activeSection === "closing" ? "active" : ""}`} 
-              onClick={() => scrollToSection("closing")}
-            >
-              <span className="index-title">CLOSING</span>
+            {/* Group 3: OUTLOOK */}
+            <div className="side-index-category">
+              <span className="side-index-cat-title">OUTLOOK</span>
+              <div 
+                className={`side-index-item ${activeSection === "closing" ? "active" : ""}`} 
+                onClick={() => scrollToSection("closing")}
+              >
+                <span className="index-title">CLOSING</span>
+              </div>
+              <div 
+                className={`side-index-item ${activeSection === "author-note" ? "active" : ""}`} 
+                onClick={() => scrollToSection("author-note")}
+              >
+                <span className="index-title">AUTHOR NOTE</span>
+              </div>
             </div>
-            <div 
-              className={`side-index-item ${activeSection === "author-note" ? "active" : ""}`} 
-              onClick={() => scrollToSection("author-note")}
-            >
-              <span className="index-title">AUTHOR NOTE</span>
-            </div>
-          </div>
 
-          {/* Side Share inside Card */}
-          <div className="side-share">
-            <span className="side-share-label">SHARE</span>
-            <div className="side-share-buttons">
-              <button onClick={shareOnX} className="social-share-btn" aria-label="Share on X">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </button>
-              <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
-              </button>
-              <div className="copy-tooltip-container">
-                <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            {/* Side Share inside Card */}
+            <div className="side-share">
+              <span className="side-share-label">SHARE</span>
+              <div className="side-share-buttons">
+                <button onClick={shareOnX} className="social-share-btn" aria-label="Share on X">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </button>
-                <span className={`copy-tooltip ${copied ? "visible" : ""}`}>Link copied!</span>
+                <button onClick={shareOnLinkedIn} className="social-share-btn" aria-label="Share on LinkedIn">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm12.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476V19z"/></svg>
+                </button>
+                <div className="copy-tooltip-container">
+                  <button onClick={copyArticleLink} className="social-share-btn" aria-label="Copy Link">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                  </button>
+                  <span className={`copy-tooltip ${copied ? "visible" : ""}`}>Link copied!</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="container essay-container">
         <main id="header" style={{ display: "block" }}>
