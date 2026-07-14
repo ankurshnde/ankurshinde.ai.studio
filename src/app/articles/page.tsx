@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 
@@ -75,24 +75,6 @@ const articles = [
 
 export default function ArticlesPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [windowWidth, setWindowWidth] = useState(1200)
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWindowWidth(window.innerWidth)
-      const handleResize = () => setWindowWidth(window.innerWidth)
-      window.addEventListener("resize", handleResize)
-      return () => window.removeEventListener("resize", handleResize)
-    }
-  }, [])
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    setMousePos({ x: e.clientX, y: e.clientY })
-  }
-
-  const isRightHalf = mousePos.x > windowWidth / 2
-  const previewLeft = isRightHalf ? mousePos.x - 200 : mousePos.x + 20
 
   const hoveredArticle = hoveredIndex !== null ? articles[hoveredIndex] : null
   const showPreview = hoveredArticle && hoveredArticle.image
@@ -101,7 +83,7 @@ export default function ArticlesPage() {
     <>
       <Navbar />
 
-      <div className="wrap" style={{ marginTop: "12px" }} onMouseMove={handleMouseMove}>
+      <div className="wrap" style={{ marginTop: "12px" }}>
         <main style={{ display: "block" }}>
           <div className={`articles-table ${hoveredIndex !== null ? "has-hovered" : ""}`}>
             {articles.map((article, index) => {
@@ -146,21 +128,16 @@ export default function ArticlesPage() {
         </main>
       </div>
 
-      {showPreview && (
-        <div
-          className="article-hover-preview"
-          style={{
-            top: mousePos.y + 15,
-            left: previewLeft,
-          }}
-        >
+      {/* Fixed-position preview image */}
+      <div className={`article-hover-preview ${showPreview ? "visible" : ""}`}>
+        {showPreview && (
           <img
             src={hoveredArticle.image}
             alt=""
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Imbue, IBM_Plex_Mono, Geist } from "next/font/google";
+import { Imbue, IBM_Plex_Mono, Geist, Instrument_Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BodyClassManager } from "@/components/body-class-manager";
 import "./globals.css";
@@ -21,6 +21,12 @@ const geist = Geist({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Ankur",
   description: "Official blog and publications of Ankur Shinde.",
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${imbue.variable} ${ibmPlexMono.variable} ${geist.variable} h-full antialiased`}
+      className={`${imbue.variable} ${ibmPlexMono.variable} ${geist.variable} ${instrumentSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
