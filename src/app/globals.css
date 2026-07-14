@@ -599,8 +599,8 @@ main {
   color: rgba(247, 245, 240, 0.7);
 }
 
-/* Social sharing buttons */
-.social-share-btn {
+/* Generic action icons (bypasses ad blocker social filters) */
+.article-icon-action {
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted);
@@ -613,14 +613,33 @@ main {
   transition: all 0.25s ease;
 }
 
-.social-share-btn-sm {
+.article-icon-action-sm {
   padding: 6px;
 }
 
-.social-share-btn:hover {
+.article-icon-action:hover {
   border-color: var(--accent);
   background-color: var(--accent);
   color: #3B3F45;
+}
+
+.meta-icon-container {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.article-bottom-actions {
+  margin-top: var(--space-xl);
+  border-top: 1px dashed rgba(13, 21, 40, 0.1);
+  padding-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+body.dark-mode .article-bottom-actions {
+  border-top-color: rgba(247, 245, 240, 0.1);
 }
 
 /* ---------- Essay Detailed Layout (China Blog) ---------- */
@@ -792,13 +811,13 @@ main {
   text-decoration: underline;
 }
 
-.side-share {
+.side-index-footer {
   border-top: 1px solid var(--border);
   padding-top: var(--space-md);
   margin-top: var(--space-xs);
 }
 
-.side-share-label {
+.side-index-footer-label {
   font-family: var(--font-mono), monospace;
   font-size: 0.6rem;
   color: var(--muted);
@@ -807,7 +826,7 @@ main {
   margin-bottom: var(--space-sm);
 }
 
-.side-share-buttons {
+.side-index-footer-icons {
   display: flex;
   gap: var(--space-xs);
 }
@@ -1132,5 +1151,48 @@ footer a:hover {
     opacity: 0 !important;
     pointer-events: none !important;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+}
+
+/* Floating bottom action bar (bypasses ad blocker social filters) */
+.floating-dock-bar {
+  position: fixed;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background: rgba(247, 245, 240, 0.85); /* chalk with opacity */
+  border: 1px solid rgba(13, 21, 40, 0.12);
+  padding: 6px 10px;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(13, 21, 40, 0.08);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  opacity: 0;
+}
+
+body.dark-mode .floating-dock-bar {
+  background: rgba(13, 21, 40, 0.85); /* ledger with opacity */
+  border: 1px solid rgba(247, 245, 240, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-dock-bar.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.floating-dock-bar .article-icon-action {
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  margin-right: 0;
+}
+
+@media (min-width: 1241px) {
+  .floating-dock-bar {
+    display: none !important;
   }
 }
