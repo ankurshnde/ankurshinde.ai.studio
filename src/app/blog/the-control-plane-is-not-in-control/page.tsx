@@ -267,17 +267,17 @@ export default function TheControlPlaneIsNotInControlPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "16px", margin: "20px 0" }}>
               <p>
                 <Highlight category="original">
-                  <strong>Alex Karp (CNBC Interview):</strong> Enterprises are skeptical about sharing their IP &amp; data w/ model providers which loses the competitive advantage and combination of open source models + application layer (ontology) + compute ( hybrid or sovereign) provides control over frontier model capabilities. Critical deployments require an application layer for safety nets.
+                  <strong>Alex Karp (<a href="https://youtu.be/0A3sGymV6kY?si=ALCPSY1ZeGbzpGpp" target="_blank" rel="noopener noreferrer" className="citation-link">CNBC Interview</a>):</strong> Enterprises are skeptical about sharing their IP &amp; data w/ model providers which loses the competitive advantage and combination of open source models + application layer (ontology) + compute ( hybrid or sovereign) provides control over frontier model capabilities. Critical deployments require an application layer for safety nets.
                 </Highlight>
               </p>
               <p>
                 <Highlight category="original">
-                  <strong>Aravind Srinivas (CNBC Interview):</strong> LLM is no longer the entire product; the real value lies in the harness and orchestration system. Introduces new metric of &quot;Max token value per watt&quot; as a critical standard for the enterprise focusing on ROI w/ useful results w/ least amount of compute. Advocates sovereignty and control over data by running the open-weight models on the local hardware like Nvidia DGX Spark.
+                  <strong>Aravind Srinivas (<a href="https://youtu.be/2HHN0fwbvXo?si=fRVV9nSC06UOJGqS" target="_blank" rel="noopener noreferrer" className="citation-link">CNBC Interview</a>):</strong> LLM is no longer the entire product; the real value lies in the harness and orchestration system. Introduces new metric of &quot;Max token value per watt&quot; as a critical standard for the enterprise focusing on ROI w/ useful results w/ least amount of compute. Advocates sovereignty and control over data by running the open-weight models on the local hardware like Nvidia DGX Spark.
                 </Highlight>
               </p>
               <p>
                 <Highlight category="original">
-                  <strong>Satya Nadella (recent blog, The Reverse Information Paradox):</strong> Enterprises pay for intelligence twice, one w/ money and other w/ IP. The seller learns more about u as u use what u purchased. The solution to this he suggested is 5C: Control. Capability. Choice. Cost. Compound.
+                  <strong>Satya Nadella (recent blog, <a href="https://x.com/satyanadella/status/2076323181154230284?s=20" target="_blank" rel="noopener noreferrer" className="citation-link">The Reverse Information Paradox</a>):</strong> Enterprises pay for intelligence twice, one w/ money and other w/ IP. The seller learns more about u as u use what u purchased. The solution to this he suggested is 5C: Control. Capability. Choice. Cost. Compound.
                 </Highlight>
               </p>
             </div>
@@ -310,15 +310,15 @@ export default function TheControlPlaneIsNotInControlPage() {
 
             <p>
               <Highlight category="original">
-                <strong>Question: How does Inter-firm communication between agents happen without sharing proprietary knowledge?</strong>
+                <strong>Question: How does Inter-firm communication between agents happen <strong><em>without</em></strong> sharing proprietary knowledge?</strong>
               </Highlight>
             </p>
 
             <p>
               <Highlight category="ai-written">
-                Take a one example, a tata's procurement agent in India negotiating a parts deal w/ Bosch's sales agent in Germany. Neither firm can see inside the other, but the deal must still cross.
+                Take a one example, a tata’s procurement agent in India negotiating a parts deal w/ Bosch’s sales agent in Germany.
               </Highlight>
-              {" "}I generated an image from GPT to visualize this:
+              {" "}Neither firm can see inside the other, but the deal must still cross. I generated an image from GPT to visualize this:
             </p>
 
             <div style={{ margin: "var(--space-lg) 0" }}>
@@ -342,7 +342,7 @@ export default function TheControlPlaneIsNotInControlPage() {
 
             <p>
               <Highlight category="original">
-                The obvious answer is they will trade outputs, not intelligence.
+                The obvious answer is they will trade <em>outputs,</em> not intelligence.
               </Highlight>
             </p>
 
@@ -378,7 +378,7 @@ export default function TheControlPlaneIsNotInControlPage() {
             <p>What agents unlock in this world is three futures:</p>
 
             <h3 style={{ fontSize: "1.4rem", margin: "28px 0 12px" }} id="future-1">
-              <Highlight category="original">Future One: New org that provides the &quot;x for agents&quot;</Highlight>
+              <Highlight category="original">Future One: New org that provides the “x for agents”</Highlight>
             </h3>
             <p>
               <Highlight category="original">
@@ -401,7 +401,7 @@ export default function TheControlPlaneIsNotInControlPage() {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em"
               }}>
-                Above slide from Prof. Raskar from MIT Media Lab communicates this future precisely.
+                The above slide from <a href="https://www.media.mit.edu/people/raskar/overview/" target="_blank" rel="noopener noreferrer" className="citation-link">Prof. Raskar</a> from MIT Media Lab communicates this future precisely.
               </div>
             </div>
 
@@ -428,6 +428,9 @@ export default function TheControlPlaneIsNotInControlPage() {
               Future Three: Open Protocols and Standards
             </h3>
             <p>
+              A future where we have shared standards for agent identity, mandates and recourse that no single company owns.
+            </p>
+            <p>
               <Highlight category="original">
                 Look at TCP/IP perfect architecture that would ever exist ( my opinion not a fact :) ), no single company owns it, but history says that this future arrives at the last.
               </Highlight>
@@ -439,19 +442,19 @@ export default function TheControlPlaneIsNotInControlPage() {
             </p>
 
             <p>
-              It's not one future we will see, but the co-existence of all three in some form: decentralized marketplaces, with &quot;X for agents&quot; orgs alongside open protocols.
+              It's not one future we will see, but the co-existence of all three in some form: decentralized marketplaces, with “X for agents” orgs alongside open protocols.
             </p>
 
             <h2 style={{ fontSize: "1.8rem", margin: "32px 0 16px" }} id="finance-hft">The Trust Stack: Lessons from High-Frequency Trading</h2>
 
             <p>
               <Highlight category="ai-improved">
-                All three futures have to solve the same problem: how do two firms trust each other’s agent without seeing inside each other’s island? The trust infrastructure is needed in all three for agent identity, authority, recourse, settlement and compliance.
+                All three futures have to solve the same problem: <strong>how do two firms trust each other’s agent without seeing inside each other’s island?</strong> The trust infrastructure is needed in all three for agent identity, authority, recourse, settlement and compliance.
               </Highlight>
             </p>
 
             <p>
-              And here is the part that gives me the confidence that this stack is buildable: finance already built it once.
+              And here is the part that gives me the confidence that this stack is buildable: <strong>finance already built it once.</strong>
             </p>
 
             <div style={{ margin: "var(--space-lg) 0" }}>
@@ -469,30 +472,29 @@ export default function TheControlPlaneIsNotInControlPage() {
                 textTransform: "uppercase",
                 letterSpacing: "0.05em"
               }}>
-                Look at this another slide from Prof. Raskar. HFT is a working system{" "}
-                <strong>where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
+                Look at this another slide from Prof. Raskar. <strong>HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
               </div>
             </div>
 
             <p>
               <Highlight category="ai-written">
-                Every trust question I raised above has a working answer in one industry. The stack is not science fiction. It is a rebuild.
+                Every trust question I raised above has a working answer in one industry. The stack is not science fiction. It is a <em>rebuild</em>.
               </Highlight>
             </p>
 
             <p>
               <Highlight category="ai-improved">
-                But note what HFT has that agentic commerce does not: one regulator, one rulebook, one settlement system.
+                But note what HFT has that agentic commerce does not: <strong>one regulator, one rulebook, one settlement system.</strong>
               </Highlight>
             </p>
             <p>
               <Highlight category="ai-written">
-                HFT works because it lives inside a single jurisdiction's walls. Agents will not. They will trade across borders, an agent in India closing a deal with an agent in Germany, where there is no shared court, no shared rulebook, no shared rail.
+                <strong>HFT works because it lives inside a single jurisdiction’s walls.</strong> Agents will trade across borders, an agent in India closing a deal with an agent in Germany, where there is no shared court, no shared rulebook, no shared rail.
               </Highlight>
             </p>
             <p>
               <Highlight category="ai-written">
-                That is the open research problem: how does trust infrastructure work when no single rulebook holds? A marketplace can internalize trust inside its walls. It cannot internalize a jurisdiction.
+                That is the open research problem: <strong>how does trust infrastructure work when no single rulebook holds?</strong> A marketplace can internalize trust inside its walls. It cannot internalize a jurisdiction.
               </Highlight>
             </p>
 
@@ -500,7 +502,7 @@ export default function TheControlPlaneIsNotInControlPage() {
 
             <p>
               <Highlight category="ai-written">
-                Which brings us back to where we started: the control plane is not in control.
+                Which brings us back to where we started: <strong>the control plane is not in control.</strong>
               </Highlight>
             </p>
             <p>
@@ -515,7 +517,7 @@ export default function TheControlPlaneIsNotInControlPage() {
             </p>
             <p>
               <Highlight category="ai-written">
-                A few questions worth asking inside ur organization (Claude help me generate the questions):
+                A few questions worth asking inside ur organization (Claude help me generate the questions =)
               </Highlight>
             </p>
 
