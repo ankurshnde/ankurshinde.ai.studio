@@ -215,6 +215,13 @@ export default function TheControlPlaneIsNotInControlPage() {
 
       <div className="container essay-container">
         <main id="header" style={{ display: "block" }}>
+          <img 
+            src="/images/holding_brain.png" 
+            alt="The Control Plane Is Not in Control" 
+            className="essay-hero-img" 
+            style={{ marginBottom: "var(--space-md)" }}
+          />
+
           <div className="article-meta-row">
             <div className="meta-column">
               <span className="meta-label">Written by</span>
