@@ -692,8 +692,6 @@ main {
 }
 
 .essay-content h2 {
-  font-family: var(--font-geist), sans-serif;
-  font-weight: 600;
   font-size: 1.8rem;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-md);
@@ -703,8 +701,6 @@ main {
 }
 
 .essay-content h3 {
-  font-family: var(--font-geist), sans-serif;
-  font-weight: 600;
   font-size: 1.3rem;
   margin-top: var(--space-lg);
   margin-bottom: var(--space-sm);
@@ -717,8 +713,8 @@ main {
 }
 
 .citation-link {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-family: inherit;
+  font-size: inherit;
   color: var(--accent-foreground);
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -729,8 +725,8 @@ main {
 }
 
 .back-link {
-  font-family: var(--font-mono), monospace;
-  font-size: 0.8rem;
+  font-family: inherit;
+  font-size: 0.95rem;
   color: var(--muted);
   text-decoration: none;
   display: inline-block;
