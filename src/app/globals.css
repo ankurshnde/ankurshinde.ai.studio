@@ -680,9 +680,10 @@ main {
 }
 
 .essay-content {
-  font-family: var(--font-sans), monospace;
-  font-size: 0.9rem;
-  line-height: 1.7;
+  font-family: var(--font-ibm-plex-sans), sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  line-height: 1.75;
   color: var(--foreground);
 }
 
@@ -707,7 +708,7 @@ main {
 }
 
 .essay-content strong {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--foreground);
 }
 
