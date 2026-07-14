@@ -93,6 +93,15 @@ export default function ArticlesPage() {
                   <span className="article-year">{article.year}</span>
                   <span className="article-title-col">{article.title}</span>
                   <span className="article-tag">{article.category}</span>
+                  {article.image && (
+                    <span className="article-row-preview">
+                      <img
+                        src={article.image}
+                        alt=""
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                      />
+                    </span>
+                  )}
                 </>
               )
 
@@ -126,17 +135,6 @@ export default function ArticlesPage() {
             })}
           </div>
         </main>
-      </div>
-
-      {/* Fixed-position preview image */}
-      <div className={`article-hover-preview ${showPreview ? "visible" : ""}`}>
-        {showPreview && (
-          <img
-            src={hoveredArticle.image}
-            alt=""
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        )}
       </div>
     </>
   )
