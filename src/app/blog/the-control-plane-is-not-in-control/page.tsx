@@ -465,7 +465,7 @@ export default function TheControlPlaneIsNotInControlPage() {
               />
             </div>
 
-            <p style={{ paddingLeft: "16px", borderLeft: "2.5px solid var(--border)", color: "var(--muted)", margin: "16px 0 var(--space-lg)" }}>
+            <p style={{ paddingLeft: "32px", margin: "16px 0 var(--space-lg)" }}>
               Look at this another slide from Prof. Raskar. <strong>HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.</strong>
             </p>
 

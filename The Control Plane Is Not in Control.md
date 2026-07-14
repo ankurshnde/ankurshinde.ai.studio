@@ -79,7 +79,7 @@ And here is the part that gives me the confidence that this stack is buildable: 
 
 ![HFT Slide](public/images/raskarAgenticCommerceApr2026_page-0012.jpg)
 
-> Look at this another slide from Prof. Raskar. **HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.**
+Look at this another slide from Prof. Raskar. **HFT is a working system where autonomous software from firms that do not trust each other trades at machine speed, all day, every day.**
 
 Every trust question I raised above has a working answer in one industry. The stack is not science fiction. It is a _rebuild_.
 
