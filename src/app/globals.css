@@ -680,7 +680,7 @@ main {
 }
 
 .essay-content {
-  font-family: var(--font-ibm-plex-sans), sans-serif;
+  font-family: var(--font-geist), sans-serif;
   font-weight: 400;
   font-size: 0.95rem;
   line-height: 1.75;
@@ -692,6 +692,8 @@ main {
 }
 
 .essay-content h2 {
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 600;
   font-size: 1.8rem;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-md);
@@ -701,6 +703,8 @@ main {
 }
 
 .essay-content h3 {
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 600;
   font-size: 1.3rem;
   margin-top: var(--space-lg);
   margin-bottom: var(--space-sm);
