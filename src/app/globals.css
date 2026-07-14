@@ -1277,8 +1277,8 @@ body.dark-mode .floating-dock-bar {
   top: 50%;
   right: 210px; /* Aligned immediately to the left of the category label */
   transform: translateY(-50%) scale(0.92);
-  width: 240px;
-  height: 150px;
+  width: 130px;
+  height: 80px;
   pointer-events: none;
   z-index: 10;
   border-radius: 8px;
