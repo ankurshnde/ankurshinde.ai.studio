@@ -1200,7 +1200,7 @@ body.dark-mode .floating-dock-bar {
 /* ---------- Redesigned Articles Table ---------- */
 .articles-table {
   border-top: 1px solid var(--border);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-sm);
   width: 100%;
 }
 
@@ -1213,11 +1213,16 @@ body.dark-mode .floating-dock-bar {
   text-decoration: none;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   color: inherit;
+  cursor: pointer;
 }
 
 /* Fade out rows that are not hovered when one is active */
 .articles-table.has-hovered .article-row:not(.hovered) {
-  opacity: 0.25;
+  opacity: 0.2;
+}
+
+.articles-table.has-hovered .article-row.hovered {
+  opacity: 1;
 }
 
 /* Year column */
@@ -1230,25 +1235,16 @@ body.dark-mode .floating-dock-bar {
   font-weight: 300;
 }
 
-/* Title column */
+/* Title column — Imbue font */
 .article-title-col {
-  font-family: var(--font-sans), sans-serif;
-  font-size: 1.15rem;
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--foreground);
   flex-grow: 1;
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  transition: color 0.25s ease;
-}
-
-.article-row:hover .article-title-col {
-  color: var(--accent);
-}
-
-body.dark-mode .article-row:hover .article-title-col {
-  color: #FFFFFF;
 }
 
 /* Tag/Category column */
@@ -1297,7 +1293,7 @@ body.dark-mode .article-row:hover .article-title-col {
     width: 60px;
   }
   .article-title-col {
-    font-size: 1rem;
+    font-size: 1.05rem;
     width: calc(100% - 70px);
   }
   .article-tag {
@@ -1307,6 +1303,6 @@ body.dark-mode .article-row:hover .article-title-col {
     font-size: 0.75rem;
   }
   .article-hover-preview {
-    display: none !important; /* Hide image hover popups on touch devices */
+    display: none !important;
   }
 }

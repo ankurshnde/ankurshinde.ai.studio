@@ -1,40 +1,55 @@
-import React from "react"
-import { Metadata } from "next"
+"use client"
+
+import React, { useState } from "react"
 import { Navbar } from "@/components/navbar"
 
-export const metadata: Metadata = {
-  title: "Publications",
-}
+const publications = [
+  {
+    id: 1,
+    year: "2026",
+    title: "Agentic Kumbh Mela",
+    category: "mit media lab",
+    href: "https://www.media.mit.edu/publications/ai-agents-for-kumbh-mela/",
+    isExternal: true,
+  },
+  {
+    id: 2,
+    year: "2026",
+    title: "Enterprise AI Agent Ecosystems",
+    category: "ssrn preprint",
+    href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6622601",
+    isExternal: true,
+  },
+]
 
 export default function PublicationsPage() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
   return (
     <>
       <Navbar />
 
-      <div className="wrap" style={{ marginTop: "32px" }}>
+      <div className="wrap" style={{ marginTop: "12px" }}>
         <main style={{ display: "block" }}>
-          <div className="essay-list">
-            <div className="essay-item">
-              <div className="essay-meta">FEBRUARY 2026 · MIT MEDIA LAB</div>
-              <div className="essay-title-row">
-                <a href="https://www.media.mit.edu/publications/ai-agents-for-kumbh-mela/" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  A Proposal for Agentic Management at Nashik Kumbh Mela 2027
+          <div className={`articles-table ${hoveredIndex !== null ? "has-hovered" : ""}`}>
+            {publications.map((pub, index) => {
+              const isHovered = hoveredIndex === index
+              return (
+                <a
+                  key={pub.id}
+                  href={pub.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`article-row ${isHovered ? "hovered" : ""}`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <span className="article-year">{pub.year}</span>
+                  <span className="article-title-col">{pub.title}</span>
+                  <span className="article-tag">{pub.category}</span>
                 </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Proposing an “Agentic Kumbh” framework assigning registered pilgrims a personal voice-first AI agent—Kumbh Doot—running across phones, IVR, and kiosks to orchestrate access services (housing, identity, payments) and experience services.</p>
-            </div>
-
-            <div className="essay-item">
-              <div className="essay-meta">APRIL 2026 · SSRN PREPRINT</div>
-              <div className="essay-title-row">
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6622601" target="_blank" rel="noopener noreferrer" className="essay-title-link">
-                  Enterprise AI Agent Ecosystems: Architecture, Economics, and the Composition Gap
-                </a>
-                <span className="redirect-icon">↗</span>
-              </div>
-              <p className="essay-excerpt">Analyzing AI agent deployments and economic layers to identify the composition gap: the need for a Trust-Aware Ranking System (TARS) to compose identity, reputation, and fitness into real-time agent selection.</p>
-            </div>
+              )
+            })}
           </div>
         </main>
       </div>

@@ -17,7 +17,7 @@ const articles = [
   {
     id: 2,
     year: "2026",
-    title: "Beijing is Not Racing the Frontier: Anatomy of China's State of AI",
+    title: "Beijing is Not Racing the Frontier",
     category: "ai strategy",
     href: "/blog/beijing-is-not-racing-the-frontier",
     image: "/images/hero.jpg",
@@ -26,46 +26,41 @@ const articles = [
   {
     id: 3,
     year: "2026",
-    title: "AI + Digital Public Infrastructure: Architecting Intelligence as a Public Utility",
+    title: "AI + Digital Public Infrastructure",
     category: "public utility",
     href: "https://ankurshinde.medium.com/ai-digital-public-infrastructure-architecting-intelligence-as-a-public-utility-0d7cc6245450",
-    image: "/images/image_1.png",
     isExternal: true,
   },
   {
     id: 4,
     year: "2025",
-    title: "Two Visions, One Future? Situating Project NANDA Within OpenAI’s 5 Levels of AI Progress",
+    title: "Two Visions, One Future",
     category: "ai progress",
     href: "https://ankurshinde.medium.com/two-visions-one-future-situating-project-nanda-within-openais-5-levels-of-ai-progress-d839a7c9bef9",
-    image: "/images/image_2.png",
     isExternal: true,
   },
   {
     id: 5,
     year: "2025",
-    title: "NANDA: The Protocol for Decentralized AI Agent Collaboration",
+    title: "NANDA Protocol",
     category: "decentralized",
     href: "https://ankurshinde.medium.com/nanda-the-protocol-for-decentralized-ai-agent-collaboration-3f9fd9fbae5a",
-    image: "/images/raskarAgenticCommerceApr2026_page-0011.jpg",
     isExternal: true,
   },
   {
     id: 6,
     year: "2025",
-    title: "Before You Build Another AI Agent, You Need to Read This",
+    title: "Before You Build Another AI Agent",
     category: "agent systems",
     href: "https://ankurshinde.medium.com/before-you-build-another-ai-agent-you-need-to-read-this-c91ff0fde18b",
-    image: "/images/raskarAgenticCommerceApr2026_page-0012.jpg",
     isExternal: true,
   },
   {
     id: 7,
     year: "2025",
-    title: "NANDA Index FAQ: Contextualizing with Linux Foundation’s A2A Agent",
+    title: "NANDA Index FAQ",
     category: "index faq",
     href: "https://ankurshinde.medium.com/nanda-index-faq-contextualizing-with-linux-foundations-a2a-agent-ff1a0d8fa9ae",
-    image: "/images/hero.jpg",
     isExternal: true,
   },
   {
@@ -74,7 +69,6 @@ const articles = [
     title: "When AI Can Attack, Only AI Can Defend",
     category: "cybersecurity",
     href: "https://ankurshinde.medium.com/when-ai-can-attack-only-ai-can-defend-5c80ffdb184e",
-    image: "/images/holding_brain.png",
     isExternal: true,
   },
 ]
@@ -100,11 +94,14 @@ export default function ArticlesPage() {
   const isRightHalf = mousePos.x > windowWidth / 2
   const previewLeft = isRightHalf ? mousePos.x - 200 : mousePos.x + 20
 
+  const hoveredArticle = hoveredIndex !== null ? articles[hoveredIndex] : null
+  const showPreview = hoveredArticle && hoveredArticle.image
+
   return (
     <>
       <Navbar />
 
-      <div className="wrap" style={{ marginTop: "40px" }} onMouseMove={handleMouseMove}>
+      <div className="wrap" style={{ marginTop: "12px" }} onMouseMove={handleMouseMove}>
         <main style={{ display: "block" }}>
           <div className={`articles-table ${hoveredIndex !== null ? "has-hovered" : ""}`}>
             {articles.map((article, index) => {
@@ -149,7 +146,7 @@ export default function ArticlesPage() {
         </main>
       </div>
 
-      {hoveredIndex !== null && articles[hoveredIndex].image && (
+      {showPreview && (
         <div
           className="article-hover-preview"
           style={{
@@ -158,7 +155,7 @@ export default function ArticlesPage() {
           }}
         >
           <img
-            src={articles[hoveredIndex].image}
+            src={hoveredArticle.image}
             alt=""
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
