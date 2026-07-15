@@ -1272,40 +1272,42 @@ body.dark-mode .floating-dock-bar {
   font-weight: 600;
 }
 
-/* Row-aligned preview image card with rounded corners and deep shadow */
-.article-row-preview {
-  position: absolute;
-  top: 50%;
-  right: 210px; /* Aligned immediately to the left of the category label */
-  transform: translateY(-50%) scale(0.92);
-  height: 80px; /* Keep height as is */
-  width: auto; /* Dynamically resize based on aspect ratio */
+/* Floating preview image following the cursor */
+.article-hover-preview {
+  position: fixed;
   pointer-events: none;
-  z-index: 10;
+  z-index: 1000;
   border-radius: 8px;
   overflow: hidden;
   box-shadow:
     0 12px 32px rgba(0, 0, 0, 0.16),
     0 4px 12px rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 80px;
+  width: auto;
+  transform: translate3d(0, 0, 0);
+  animation: previewFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.article-row-preview img {
+.article-hover-preview img {
   height: 100%;
   width: auto;
   display: block;
 }
 
-.article-row:hover .article-row-preview {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
+@keyframes previewFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translate3d(0, 5px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
 }
 
 @media (max-width: 1024px) {
-  .article-row-preview {
-    display: none !important; /* Hide image preview on smaller viewports */
+  .article-hover-preview {
+    display: none !important; /* Hide image preview on mobile/tablet viewports */
   }
 }
 

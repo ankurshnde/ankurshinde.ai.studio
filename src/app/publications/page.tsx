@@ -26,12 +26,33 @@ const publications = [
 
 export default function PublicationsPage() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [windowWidth, setWindowWidth] = useState(0)
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth)
+      const handleResize = () => setWindowWidth(window.innerWidth)
+      window.addEventListener("resize", handleResize)
+      return () => window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMousePos({ x: e.clientX, y: e.clientY })
+  }
+
+  const isRightHalf = mousePos.x > windowWidth / 2
+  const previewLeft = isRightHalf ? mousePos.x - 160 : mousePos.x + 20
+
+  const hoveredArticle = hoveredIndex !== null ? publications[hoveredIndex] : null
+  const showPreview = hoveredArticle && hoveredArticle.image
 
   return (
     <>
       <Navbar />
 
-      <div className="wrap" style={{ marginTop: "12px" }}>
+      <div className="wrap" style={{ marginTop: "12px" }} onMouseMove={handleMouseMove}>
         <main style={{ display: "block" }}>
           <div className={`articles-table ${hoveredIndex !== null ? "has-hovered" : ""}`}>
             {publications.map((pub, index) => {
@@ -49,17 +70,25 @@ export default function PublicationsPage() {
                   <span className="article-year">{pub.year}</span>
                   <span className="article-title-col">{pub.title}</span>
                   <span className="article-tag">{pub.category}</span>
-                  {pub.image && (
-                    <span className="article-row-preview">
-                      <img src={pub.image} alt="" />
-                    </span>
-                  )}
                 </a>
               )
             })}
           </div>
         </main>
       </div>
+
+      {showPreview && (
+        <div
+          className="article-hover-preview"
+          style={{
+            position: "fixed",
+            top: mousePos.y + 15,
+            left: previewLeft,
+          }}
+        >
+          <img src={hoveredArticle.image} alt="" />
+        </div>
+      )}
     </>
   )
 }
