@@ -51,11 +51,7 @@ export default function PublicationsPage() {
                   <span className="article-tag">{pub.category}</span>
                   {pub.image && (
                     <span className="article-row-preview">
-                      <img
-                        src={pub.image}
-                        alt=""
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                      />
+                      <img src={pub.image} alt="" />
                     </span>
                   )}
                 </a>

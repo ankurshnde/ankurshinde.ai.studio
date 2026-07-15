@@ -1278,27 +1278,24 @@ body.dark-mode .floating-dock-bar {
   top: 50%;
   right: 210px; /* Aligned immediately to the left of the category label */
   transform: translateY(-50%) scale(0.92);
-  width: 130px;
-  height: 80px;
+  height: 80px; /* Keep height as is */
+  width: auto; /* Dynamically resize based on aspect ratio */
   pointer-events: none;
   z-index: 10;
   border-radius: 8px;
   overflow: hidden;
   box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.12),
-    0 4px 12px rgba(0, 0, 0, 0.06);
+    0 12px 32px rgba(0, 0, 0, 0.16),
+    0 4px 12px rgba(0, 0, 0, 0.08);
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .article-row-preview img {
-  width: 100%;
   height: 100%;
-  object-fit: contain; /* Do not cut or crop */
+  width: auto;
+  display: block;
 }
 
 .article-row:hover .article-row-preview {

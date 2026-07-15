@@ -101,11 +101,7 @@ export default function ArticlesPage() {
                   <span className="article-tag">{article.category}</span>
                   {article.image && (
                     <span className="article-row-preview">
-                      <img
-                        src={article.image}
-                        alt=""
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
-                      />
+                      <img src={article.image} alt="" />
                     </span>
                   )}
                 </>
