@@ -50,33 +50,49 @@ export function Navbar() {
     setIsOpen(false)
   }
 
-  const toggleTheme = () => {
-    playMechanicalClick()
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
-
-  const [btnText, setBtnText] = useState("0000")
-  const [isBtnHovered, setIsBtnHovered] = useState(false)
+  const [btnText, setBtnText] = useState("1111")
+  const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
-    if (!isBtnHovered) {
-      setBtnText(theme === "dark" ? "0001" : "0000")
-      return
+    if (!isAnimating) {
+      setBtnText(theme === "dark" ? "0000" : "1111")
     }
+  }, [theme, isAnimating])
 
-    // Dynamic bit-shift animation on hover/interaction representing binary system state changes
-    const frames = theme === "dark"
-      ? ["0001", "0001 << 1", "0010 << 1", "0100 << 1", "1000"]
-      : ["0000", "0000 << 1", "0000 << 2", "0000 << 3", "0000"]
+  const triggerScramble = (targetText: string) => {
+    setIsAnimating(true)
+    const chars = "!<>-_\\/[]{}—=+*^?#"
+    const length = 4
+    let frame = 0
+    const maxFrames = 12
 
-    let frameIdx = 0
     const interval = setInterval(() => {
-      setBtnText(frames[frameIdx % frames.length])
-      frameIdx++
-    }, 180)
+      if (frame >= maxFrames) {
+        setBtnText(targetText)
+        setIsAnimating(false)
+        clearInterval(interval)
+        return
+      }
 
-    return () => clearInterval(interval)
-  }, [isBtnHovered, theme])
+      let scrambled = ""
+      for (let i = 0; i < length; i++) {
+        if (Math.random() < frame / maxFrames) {
+          scrambled += targetText[i]
+        } else {
+          scrambled += chars[Math.floor(Math.random() * chars.length)]
+        }
+      }
+      setBtnText(scrambled)
+      frame++
+    }, 40)
+  }
+
+  const toggleTheme = () => {
+    playMechanicalClick()
+    const nextTheme = theme === "dark" ? "light" : "dark"
+    setTheme(nextTheme)
+    triggerScramble(nextTheme === "dark" ? "0000" : "1111")
+  }
 
   return (
     <header className="navbar" style={{ position: "relative" }}>
@@ -102,8 +118,6 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={toggleTheme}
-              onMouseEnter={() => setIsBtnHovered(true)}
-              onMouseLeave={() => setIsBtnHovered(false)}
               className="theme-toggle-btn"
               style={{
                 marginLeft: "auto",
@@ -118,9 +132,9 @@ export function Navbar() {
                 padding: "4px 8px",
                 textTransform: "uppercase",
               }}
-              title="Switch between Vellum (0000) and Blueprint (0001) views"
+              title="Switch between Vellum (1111) and Blueprint (0000) views"
             >
-              [ BIN // {btnText} ]
+              [ {btnText} ]
             </button>
           )}
         </div>
@@ -134,10 +148,6 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={toggleTheme}
-                onMouseEnter={() => setIsBtnHovered(true)}
-                onMouseLeave={() => setIsBtnHovered(false)}
-                onTouchStart={() => setIsBtnHovered(true)}
-                onTouchEnd={() => setIsBtnHovered(false)}
                 className="theme-toggle-btn"
                 style={{
                   background: "transparent",

@@ -70,34 +70,34 @@
 }
 
 .dark {
-  --background: #3B3F45; /* Graphite */
+  --background: #121417; /* Matte Technical Black */
   --foreground: #F7F7F5; /* Warm paper */
-  --card: #3B3F45;
+  --card: #121417;
   --card-foreground: #F7F7F5;
-  --popover: #3B3F45;
+  --popover: #121417;
   --popover-foreground: #F7F7F5;
   --primary: #F7F7F5;
-  --primary-foreground: #3B3F45;
-  --secondary: #4A4E54;
+  --primary-foreground: #121417;
+  --secondary: #1E2228;
   --secondary-foreground: #F7F7F5;
   --muted: rgba(247, 247, 245, 0.60);
   --muted-foreground: rgba(247, 247, 245, 0.65);
   --accent: #C7D8E8; /* Sky Blue */
-  --accent-foreground: #3B3F45;
+  --accent-foreground: #121417;
   --destructive: oklch(0.704 0.191 22.216);
   --border: rgba(247, 247, 245, 0.22);
   --input: rgba(247, 247, 245, 0.22);
   --ring: #C7D8E8;
 
-  /* Blueprint Grid lines in dark mode (graphite/blue blueprint view) */
+  /* Blueprint Grid lines in dark mode (deep black blueprint view) */
   --grid-major: rgba(199, 216, 232, 0.06);
   --grid-minor: rgba(199, 216, 232, 0.02);
 
   /* Compatibility overrides in dark mode */
   --prussian: #F7F7F5;
   --ledger: #F7F7F5;
-  --vellum: #3B3F45;
-  --chalk: #3B3F45;
+  --vellum: #121417;
+  --chalk: #121417;
 }
 
 @layer base {
