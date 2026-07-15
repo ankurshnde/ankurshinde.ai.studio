@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import { playMechanicalClick } from "@/lib/audio-effects"
@@ -11,7 +11,7 @@ export function Navbar() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
 
   useEffect(() => {
     setMounted(true)
@@ -51,16 +51,19 @@ export function Navbar() {
   }
 
   const [btnText, setBtnText] = useState("1111")
-  const [isAnimating, setIsAnimating] = useState(false)
+  const isTogglingRef = useRef(false)
 
   useEffect(() => {
-    if (!isAnimating) {
-      setBtnText(theme === "dark" ? "0000" : "1111")
+    if (mounted && resolvedTheme) {
+      if (isTogglingRef.current) {
+        isTogglingRef.current = false
+      } else {
+        setBtnText(resolvedTheme === "dark" ? "0000" : "1111")
+      }
     }
-  }, [theme, isAnimating])
+  }, [mounted, resolvedTheme])
 
   const triggerScramble = (targetText: string) => {
-    setIsAnimating(true)
     const chars = "!<>-_\\/[]{}—=+*^?#"
     const length = 4
     let frame = 0
@@ -69,7 +72,6 @@ export function Navbar() {
     const interval = setInterval(() => {
       if (frame >= maxFrames) {
         setBtnText(targetText)
-        setIsAnimating(false)
         clearInterval(interval)
         return
       }
@@ -89,7 +91,8 @@ export function Navbar() {
 
   const toggleTheme = () => {
     playMechanicalClick()
-    const nextTheme = theme === "dark" ? "light" : "dark"
+    isTogglingRef.current = true
+    const nextTheme = resolvedTheme === "dark" ? "light" : "dark"
     setTheme(nextTheme)
     triggerScramble(nextTheme === "dark" ? "0000" : "1111")
   }
