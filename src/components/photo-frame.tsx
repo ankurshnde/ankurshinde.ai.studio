@@ -65,7 +65,7 @@ export function PhotoFrame() {
       const d = Math.hypot(m.x - m.x2, m.y - m.y2)
       sTo(d / cw * 2)
       ctx.clearRect(0, 0, cw, ch)
-      ctx.drawImage(img, 0, 0, cw, ch, 0, 0, cw, ch)
+      ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, cw, ch)
       boxes.forEach(drawImg)
       if (props.dots) {
         boxes.forEach(drawDots)
@@ -78,12 +78,21 @@ export function PhotoFrame() {
       c.s = 1 - gsap.utils.clamp(0, 1, c.d / cw / m.s)
       if (c.s < 0.001) return
       let boxScaled = props.boxSize * c.s
+
+      const imgScaleX = img.width / cw
+      const imgScaleY = img.height / ch
+
+      const sourceX = (c.x + boxScaled / 2) * imgScaleX
+      const sourceY = (c.y + boxScaled / 2) * imgScaleY
+      const sourceW = (props.boxSize - boxScaled) * imgScaleX
+      const sourceH = (props.boxSize - boxScaled) * imgScaleY
+
       ctx.drawImage(
         img,
-        c.x + boxScaled / 2,
-        c.y + boxScaled / 2,
-        props.boxSize - boxScaled,
-        props.boxSize - boxScaled,
+        sourceX,
+        sourceY,
+        sourceW,
+        sourceH,
         c.x,
         c.y,
         props.boxSize,
