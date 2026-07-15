@@ -10,6 +10,7 @@ const publications = [
     title: "Agentic Kumbh Mela",
     category: "research",
     href: "https://www.media.mit.edu/publications/ai-agents-for-kumbh-mela/",
+    image: "/images/kumbh.png",
     isExternal: true,
   },
   {
@@ -18,6 +19,7 @@ const publications = [
     title: "Enterprise AI Agent Ecosystems",
     category: "preprint",
     href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6622601",
+    image: "/images/enterprise_ai_ecosystem.avif",
     isExternal: true,
   },
 ]
@@ -47,6 +49,15 @@ export default function PublicationsPage() {
                   <span className="article-year">{pub.year}</span>
                   <span className="article-title-col">{pub.title}</span>
                   <span className="article-tag">{pub.category}</span>
+                  {pub.image && (
+                    <span className="article-row-preview">
+                      <img
+                        src={pub.image}
+                        alt=""
+                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                      />
+                    </span>
+                  )}
                 </a>
               )
             })}

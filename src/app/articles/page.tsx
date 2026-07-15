@@ -20,7 +20,7 @@ const articles = [
     title: "Beijing is Not Racing the Frontier",
     category: "strategy",
     href: "/blog/beijing-is-not-racing-the-frontier",
-    image: "/images/hero.jpg",
+    image: "/images/beijing_is_not_racing_the_frontier.avif",
     isExternal: false,
   },
   {
@@ -29,6 +29,7 @@ const articles = [
     title: "AI + Digital Public Infrastructure",
     category: "utility",
     href: "https://ankurshinde.medium.com/ai-digital-public-infrastructure-architecting-intelligence-as-a-public-utility-0d7cc6245450",
+    image: "/images/ai_dpi.avif",
     isExternal: true,
   },
   {
@@ -37,6 +38,7 @@ const articles = [
     title: "Two Visions, One Future",
     category: "progress",
     href: "https://ankurshinde.medium.com/two-visions-one-future-situating-project-nanda-within-openais-5-levels-of-ai-progress-d839a7c9bef9",
+    image: "/images/two_visions_one_future.avif",
     isExternal: true,
   },
   {
@@ -45,6 +47,7 @@ const articles = [
     title: "NANDA Protocol",
     category: "decentralized",
     href: "https://ankurshinde.medium.com/nanda-the-protocol-for-decentralized-ai-agent-collaboration-3f9fd9fbae5a",
+    image: "/images/nanda_protocol.avif",
     isExternal: true,
   },
   {
@@ -53,6 +56,7 @@ const articles = [
     title: "Before You Build Another AI Agent",
     category: "systems",
     href: "https://ankurshinde.medium.com/before-you-build-another-ai-agent-you-need-to-read-this-c91ff0fde18b",
+    image: "/images/before_building_another_ai_agent.avif",
     isExternal: true,
   },
   {
@@ -61,6 +65,7 @@ const articles = [
     title: "NANDA Index FAQ",
     category: "faq",
     href: "https://ankurshinde.medium.com/nanda-index-faq-contextualizing-with-linux-foundations-a2a-agent-ff1a0d8fa9ae",
+    image: "/images/nanda_index_faq.avif",
     isExternal: true,
   },
   {
@@ -69,6 +74,7 @@ const articles = [
     title: "When AI Can Attack, Only AI Can Defend",
     category: "cybersecurity",
     href: "https://ankurshinde.medium.com/when-ai-can-attack-only-ai-can-defend-5c80ffdb184e",
+    image: "/images/ai_can_attack_ai_can_defend.avif",
     isExternal: true,
   },
 ]
