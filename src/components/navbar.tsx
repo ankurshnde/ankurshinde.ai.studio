@@ -55,6 +55,29 @@ export function Navbar() {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
+  const [btnText, setBtnText] = useState("0000")
+  const [isBtnHovered, setIsBtnHovered] = useState(false)
+
+  useEffect(() => {
+    if (!isBtnHovered) {
+      setBtnText(theme === "dark" ? "0001" : "0000")
+      return
+    }
+
+    // Dynamic bit-shift animation on hover/interaction representing binary system state changes
+    const frames = theme === "dark"
+      ? ["0001", "0001 << 1", "0010 << 1", "0100 << 1", "1000"]
+      : ["0000", "0000 << 1", "0000 << 2", "0000 << 3", "0000"]
+
+    let frameIdx = 0
+    const interval = setInterval(() => {
+      setBtnText(frames[frameIdx % frames.length])
+      frameIdx++
+    }, 180)
+
+    return () => clearInterval(interval)
+  }, [isBtnHovered, theme])
+
   return (
     <header className="navbar" style={{ position: "relative" }}>
       <div className="wrap nav-wrap">
@@ -79,6 +102,8 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={toggleTheme}
+              onMouseEnter={() => setIsBtnHovered(true)}
+              onMouseLeave={() => setIsBtnHovered(false)}
               className="theme-toggle-btn"
               style={{
                 marginLeft: "auto",
@@ -93,9 +118,9 @@ export function Navbar() {
                 padding: "4px 8px",
                 textTransform: "uppercase",
               }}
-              title="Switch between Light (Vellum) and Dark (Blueprint) drafting views"
+              title="Switch between Vellum (0000) and Blueprint (0001) views"
             >
-              [ VIEW // {theme === "dark" ? "BLUEPRINT" : "VELLUM"} ]
+              [ BIN // {btnText} ]
             </button>
           )}
         </div>
@@ -109,6 +134,10 @@ export function Navbar() {
             {mounted && (
               <button
                 onClick={toggleTheme}
+                onMouseEnter={() => setIsBtnHovered(true)}
+                onMouseLeave={() => setIsBtnHovered(false)}
+                onTouchStart={() => setIsBtnHovered(true)}
+                onTouchEnd={() => setIsBtnHovered(false)}
                 className="theme-toggle-btn"
                 style={{
                   background: "transparent",
@@ -120,7 +149,7 @@ export function Navbar() {
                   color: "var(--muted)",
                 }}
               >
-                [{theme === "dark" ? "BLUEPRINT" : "VELLUM"}]
+                [{btnText}]
               </button>
             )}
             <button 
