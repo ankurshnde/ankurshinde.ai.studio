@@ -60,8 +60,15 @@ export function PhotoFrame() {
       gsap.ticker.add(update)
     }
 
+    let hasHoveredYet = false
+
     function update() {
       if (!isLoaded || !ctx || !canvas) return
+      if (!hasHoveredYet) {
+        ctx.clearRect(0, 0, cw, ch)
+        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, cw, ch)
+        return
+      }
       const d = Math.hypot(m.x - m.x2, m.y - m.y2)
       sTo(d / cw * 2)
       ctx.clearRect(0, 0, cw, ch)
@@ -108,6 +115,7 @@ export function PhotoFrame() {
     }
 
     const handlePointerMove = (e: PointerEvent) => {
+      hasHoveredYet = true
       cRect = canvas.getBoundingClientRect()
       sx = cw / cRect.width
       sy = ch / cRect.height

@@ -762,13 +762,15 @@ body.dark-mode .article-bottom-actions {
 .citation-link {
   font-family: inherit;
   font-size: inherit;
-  color: var(--accent-foreground);
+  color: var(--foreground);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2.5px;
 }
 
 .citation-link:hover {
   background-color: var(--accent);
+  color: #121417; /* High contrast text in light-blue selection */
 }
 
 .back-link {
