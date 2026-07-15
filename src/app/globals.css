@@ -45,6 +45,10 @@
   --ring: #C7D8E8;
   --radius: 0px; /* Sharp corners non-negotiable */
 
+  /* Blueprint Grid lines in light mode (warm vellum drafting paper) */
+  --grid-major: rgba(59, 63, 69, 0.04);
+  --grid-minor: rgba(59, 63, 69, 0.012);
+
   /* Compatibility aliases for blog content */
   --prussian: #3B3F45;
   --ledger: #3B3F45;
@@ -85,6 +89,10 @@
   --input: rgba(247, 247, 245, 0.22);
   --ring: #C7D8E8;
 
+  /* Blueprint Grid lines in dark mode (graphite/blue blueprint view) */
+  --grid-major: rgba(199, 216, 232, 0.06);
+  --grid-minor: rgba(199, 216, 232, 0.02);
+
   /* Compatibility overrides in dark mode */
   --prussian: #F7F7F5;
   --ledger: #F7F7F5;
@@ -111,6 +119,24 @@
     -webkit-font-smoothing: antialiased;
     font-weight: 300;
     line-height: 1.6;
+    position: relative;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+    background-image:
+      linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+      linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+    opacity: 0.9;
   }
   html {
     @apply font-sans;

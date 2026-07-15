@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import { Navbar } from "@/components/navbar"
+import { playMechanicalClick } from "@/lib/audio-effects"
 
 const articles = [
   {
@@ -130,6 +131,7 @@ export default function ArticlesPage() {
                     className={`article-row ${isHovered ? "hovered" : ""}`}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
+                    onClick={playMechanicalClick}
                   >
                     {content}
                   </a>
@@ -143,6 +145,7 @@ export default function ArticlesPage() {
                   className={`article-row ${isHovered ? "hovered" : ""}`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={playMechanicalClick}
                 >
                   {content}
                 </Link>

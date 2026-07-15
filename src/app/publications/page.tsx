@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import { Navbar } from "@/components/navbar"
+import { playMechanicalClick } from "@/lib/audio-effects"
 
 const publications = [
   {
@@ -66,6 +67,7 @@ export default function PublicationsPage() {
                   className={`article-row ${isHovered ? "hovered" : ""}`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={playMechanicalClick}
                 >
                   <span className="article-year">{pub.year}</span>
                   <span className="article-title-col">{pub.title}</span>

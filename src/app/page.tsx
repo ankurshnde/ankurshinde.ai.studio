@@ -1,8 +1,10 @@
+"use client"
+
 import React from "react"
 import { Navbar } from "@/components/navbar"
 import { PhotoFrame } from "@/components/photo-frame"
 import { ScrambleGreeting } from "@/components/scramble-greeting"
-import { Button } from "@/components/ui/button"
+import { playMechanicalClick } from "@/lib/audio-effects"
 
 export default function HomePage() {
   return (
@@ -31,6 +33,7 @@ export default function HomePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bio-link"
+                      onClick={playMechanicalClick}
                     >
                       Project NANDA
                     </a>
@@ -42,6 +45,7 @@ export default function HomePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bio-link"
+                      onClick={playMechanicalClick}
                     >
                       MIT Media Lab
                     </a>
@@ -66,6 +70,7 @@ export default function HomePage() {
                     className="btn"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={playMechanicalClick}
                   >
                     LinkedIn
                   </a>
