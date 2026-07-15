@@ -291,8 +291,8 @@ main {
   position: absolute;
   width: 12px;
   height: 12px;
-  border: 1.2px solid #111111;
-  opacity: 0.9;
+  border: 1.2px solid var(--foreground);
+  opacity: 0.22;
   transition: border-color 0.28s ease, opacity 0.28s ease;
 }
 .corner.tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
@@ -322,8 +322,8 @@ main {
 }
 
 .technical-frame:hover .corner {
-  border-color: #111111;
-  opacity: 1;
+  border-color: var(--foreground);
+  opacity: 0.55;
 }
 .technical-frame:hover .crosshair-label {
   color: var(--accent);
@@ -487,8 +487,8 @@ main {
   position: absolute;
   width: 6px;
   height: 6px;
-  border: 1px solid #111111;
-  opacity: 0.9;
+  border: 1px solid var(--foreground);
+  opacity: 0.22;
   transition: border-color 0.28s ease, opacity 0.28s ease;
 }
 .btn-corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
@@ -515,8 +515,8 @@ main {
 }
 
 .technical-btn-wrap:hover .btn-corner {
-  border-color: #111111;
-  opacity: 1;
+  border-color: var(--foreground);
+  opacity: 0.55;
 }
 .technical-btn-wrap:hover .btn {
   border-color: var(--accent);
@@ -680,6 +680,8 @@ body.dark-mode .article-bottom-actions {
   height: auto;
   border: 1px solid var(--border);
   display: block;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .article-meta-row {
