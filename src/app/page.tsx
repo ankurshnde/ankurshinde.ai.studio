@@ -29,7 +29,7 @@ export default function HomePage() {
                   I'm the Head of Media at{" "}
                   <strong>
                     <a
-                      href="http://projectnanda.org/"
+                      href="https://projectnanda.org/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="bio-link"

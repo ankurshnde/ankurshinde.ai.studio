@@ -206,17 +206,17 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-body.dark-mode .nav-link {
+.dark .nav-link {
   color: rgba(247, 247, 245, 0.65);
   text-decoration-color: rgba(247, 247, 245, 0.22);
 }
 
-body.dark-mode .nav-link:hover {
+.dark .nav-link:hover {
   color: var(--foreground);
   text-decoration-color: var(--foreground);
 }
 
-body.dark-mode .nav-link.active {
+.dark .nav-link.active {
   color: var(--foreground);
   text-decoration-color: var(--accent);
 }
@@ -377,6 +377,10 @@ main {
   .hero-content {
     align-items: flex-start;
     text-align: left;
+  }
+
+  .action-row {
+    justify-content: flex-start;
   }
 
   .photo-container {
@@ -664,7 +668,7 @@ main {
   gap: var(--space-md);
 }
 
-body.dark-mode .article-bottom-actions {
+.dark .article-bottom-actions {
   border-top-color: rgba(247, 245, 240, 0.1);
 }
 
@@ -720,7 +724,7 @@ body.dark-mode .article-bottom-actions {
 }
 
 .essay-page-title {
-  font-size: 3rem;
+  font-size: clamp(1.85rem, 5vw, 3rem);
   line-height: 1.1;
   color: var(--foreground);
   margin-bottom: var(--space-xl);
@@ -861,21 +865,23 @@ body.dark-mode .article-bottom-actions {
   gap: var(--space-xs);
 }
 
-/* Scroll progress bar on top */
+/* Scroll progress bar on top (above sticky navbar) */
 .scroll-progress-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 3px;
   background: transparent;
-  z-index: 100;
+  z-index: 10001;
+  pointer-events: none;
 }
 
 .scroll-progress-bar {
   height: 100%;
   background: var(--accent);
   width: 0%;
+  transition: width 0.05s linear;
 }
 
 /* Footer Section */
@@ -925,11 +931,10 @@ footer a:hover {
   }
 }
 
-/* Disable height restriction if content overflows viewport */
+/* Single-viewport home layout on desktop; allow scroll if content overflows */
 @media (min-height: 650px) and (min-width: 901px) {
   body.home-page {
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
@@ -1203,8 +1208,8 @@ footer a:hover {
   opacity: 0;
 }
 
-body.dark-mode .floating-dock-bar {
-  background: rgba(13, 21, 40, 0.85); /* ledger with opacity */
+.dark .floating-dock-bar {
+  background: rgba(18, 20, 23, 0.9);
   border: 1px solid rgba(247, 245, 240, 0.12);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
@@ -1360,4 +1365,56 @@ body.dark-mode .floating-dock-bar {
     margin-left: 60px;
     font-size: 0.75rem;
   }
+}
+
+/* Touch devices: don't leave non-hovered rows faded after first tap */
+@media (hover: none) {
+  .articles-table.has-hovered .article-row:not(.hovered) {
+    opacity: 1;
+  }
+  .article-row:hover {
+    background-color: transparent !important;
+  }
+}
+
+/* ---------- Viewport edge progress dashes (tablet / mobile articles) ---------- */
+.viewport-progress-indicator {
+  position: fixed;
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+@media (min-width: 1241px) {
+  .viewport-progress-indicator {
+    display: none; /* Full desktop side nav is active */
+  }
+}
+
+.progress-dot {
+  width: 14px;
+  height: 2px;
+  background: rgba(59, 63, 69, 0.22);
+  transition: width 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.dark .progress-dot {
+  background: rgba(247, 245, 240, 0.22);
+}
+
+.progress-dot.active {
+  background: var(--foreground);
+  width: 22px;
+}
+
+.dark .progress-dot.active {
+  background: #FFFFFF;
+  width: 22px;
 }
