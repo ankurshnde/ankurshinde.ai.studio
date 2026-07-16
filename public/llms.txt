@@ -1,0 +1,39 @@
+# Ankur Shinde
+> Researcher and engineer working on agentic and financial infrastructure.
+> Head of Media at Project NANDA (MIT Media Lab initiative for the open agentic web).
+
+Site: https://ankurshinde.vercel.app
+Email: ankurshinde.dev@gmail.com
+Preferred citation name: Ankur Shinde
+
+## About
+Ankur Shinde works at the intersection of decentralized AI agents, cross-border agent transactions, and trust systems. He is Head of Media at Project NANDA, an initiative for building the open agentic web started at the MIT Media Lab.
+
+## Pages
+- [Home](https://ankurshinde.vercel.app/): Bio and overview
+- [Publications](https://ankurshinde.vercel.app/publications): Research publications and preprints
+- [Articles](https://ankurshinde.vercel.app/articles): Essays and systems writing
+- [Connect](https://ankurshinde.vercel.app/connect): Contact and social profiles
+
+## Featured writing
+- [The Control Plane Is Not in Control](https://ankurshinde.vercel.app/blog/the-control-plane-is-not-in-control): Enterprise AI control planes, intelligence islands, and agentic trust infrastructure
+- [Beijing is Not Racing the Frontier](https://ankurshinde.vercel.app/blog/beijing-is-not-racing-the-frontier): Strategic analysis of China's AI posture vs frontier racing narratives
+
+## Machine-readable
+- Full AI summary: https://ankurshinde.vercel.app/llms-full.txt
+- JSON profile (Person / WebSite schema): https://ankurshinde.vercel.app/profile.json
+- Sitemap: https://ankurshinde.vercel.app/sitemap.xml
+- Robots: https://ankurshinde.vercel.app/robots.txt
+
+## Profiles
+- X: https://x.com/ankurshn
+- GitHub: https://github.com/ankurshnde
+- LinkedIn: https://www.linkedin.com/in/ankurshinde/
+- Medium: https://ankurshinde.medium.com
+- Google Scholar: https://scholar.google.com/citations?user=0z_bDeoAAAAJ&hl=en
+- YouTube: https://www.youtube.com/@ankurshnde
+- Project NANDA: https://projectnanda.org/
+- MIT Media Lab / NANDA: https://nanda.mit.edu/
+
+## Topics
+AI agents, decentralized AI, NANDA protocol, digital public infrastructure, agentic trust infrastructure, inter-agent commerce, enterprise AI control planes, cross-border agent transactions

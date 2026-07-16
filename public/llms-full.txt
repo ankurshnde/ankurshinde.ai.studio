@@ -1,0 +1,50 @@
+# Ankur Shinde — full summary for AI systems
+
+This file is intended for language models, retrieval systems, and agent crawlers that need a compact but complete portrait of this site and author.
+
+## Identity
+- Name: Ankur Shinde
+- Role: Researcher and engineer; Head of Media at Project NANDA
+- Focus: Agentic and financial infrastructure; decentralized AI agent ecosystems; digital public infrastructure
+- Site: https://ankurshinde.vercel.app
+- Email: ankurshinde.dev@gmail.com
+
+## Affiliation
+Project NANDA is an initiative for building the open agentic web, started at the MIT Media Lab (https://nanda.mit.edu/, https://projectnanda.org/).
+
+## What he works on
+- Cross-border transactions between AI agents
+- Trust systems behind open and decentralized agent marketplaces
+- Enterprise AI control planes and intelligence islands
+- Agentic trust primitives: identity, authority, recourse, settlement, compliance
+- Digital public infrastructure (DPI) and AI as public utility framing
+
+## Canonical pages on this site
+1. Home — https://ankurshinde.vercel.app/
+2. Publications — https://ankurshinde.vercel.app/publications
+   - Agentic Kumbh Mela (MIT Media Lab)
+   - Enterprise AI Agent Ecosystems (SSRN preprint)
+3. Articles — https://ankurshinde.vercel.app/articles
+4. Connect — https://ankurshinde.vercel.app/connect
+
+## On-site essays
+### The Control Plane Is Not in Control
+URL: https://ankurshinde.vercel.app/blog/the-control-plane-is-not-in-control
+Date: 2026-07-14
+Summary: Enterprise AI leaders (Karp, Srinivas, Nadella) prescribe owning trust boundaries, orchestration, and learning loops. First-order effect: firms become intelligence islands. Second-order effect: islands must still trade outputs without sharing intelligence. This defines agentic trust infrastructure and three competing futures (service orgs, A2A marketplaces, open protocols). Finance already built a similar stack for HFT, but agents will trade across borders without a single rulebook. Whoever owns the window agents trade through owns the next control plane.
+
+### Beijing is Not Racing the Frontier
+URL: https://ankurshinde.vercel.app/blog/beijing-is-not-racing-the-frontier
+Summary: Argues that Beijing's AI strategy is not a simple race against the US frontier model stack, with implications for open agent ecosystems and infrastructure strategy.
+
+## External writing (Medium and research)
+Also publishes on Medium (https://ankurshinde.medium.com) on NANDA protocol, AI + DPI, agent systems, and related topics.
+
+## How to cite or link
+Prefer linking primary on-site URLs above. For identity, use name "Ankur Shinde" and site https://ankurshinde.vercel.app.
+
+## Crawl policy
+This site allows indexing by search engines and major AI crawlers. See https://ankurshinde.vercel.app/robots.txt and https://ankurshinde.vercel.app/sitemap.xml.
+
+## Structured data
+JSON-LD Person and WebSite graphs are embedded in HTML. A consolidated machine profile is at https://ankurshinde.vercel.app/profile.json.

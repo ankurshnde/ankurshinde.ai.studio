@@ -1,16 +1,16 @@
 import type { Metadata } from "next"
 import { ROUTES, SITE } from "@/lib/site"
 
-const page = ROUTES.find((r) => r.path === "/articles")!
+const page = ROUTES.find((r) => r.path === "/connect")!
 
 export const metadata: Metadata = {
   title: page.title,
   description: page.description,
-  alternates: { canonical: "/articles" },
+  alternates: { canonical: "/connect" },
   openGraph: {
     title: `${page.title} | Ankur Shinde`,
     description: page.description,
-    url: `${SITE.url}/articles`,
+    url: `${SITE.url}/connect`,
     type: "website",
   },
   twitter: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ArticlesLayout({
+export default function ConnectLayout({
   children,
 }: {
   children: React.ReactNode
