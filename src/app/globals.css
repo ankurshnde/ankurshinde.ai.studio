@@ -348,23 +348,32 @@ main {
 
 .base-img {
   z-index: 1;
-  filter: brightness(1.0) contrast(1.0);
   opacity: 1;
-  mix-blend-mode: normal;
 }
 
-.dark .base-img {
-  filter: brightness(0.85) contrast(1.0);
+.hover-img {
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
 }
 
-/* Premium image zoom hovers */
+/* Premium image cross-fade hover states */
 .photo-frame:hover .base-img {
-  transform: scale(1.05);
-  filter: brightness(1.03) contrast(1.02);
+  opacity: 0.15;
+  transform: scale(1.02);
 }
+
+.photo-frame:hover .hover-img {
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+
 .dark .photo-frame:hover .base-img {
-  transform: scale(1.05);
-  filter: brightness(0.95) contrast(1.02);
+  opacity: 0.1;
+}
+
+.dark .photo-frame:hover .hover-img {
+  opacity: 0.85;
 }
 
 @media (max-width: 900px) {
