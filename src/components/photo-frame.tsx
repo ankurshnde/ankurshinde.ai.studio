@@ -24,7 +24,7 @@ export function PhotoFrame() {
             className="base-img"
           />
           <img
-            src="/ankur_stippled.png"
+            src="/ankur_stippled.jpg"
             alt="Ankur Shinde Hover State"
             className="hover-img"
           />
