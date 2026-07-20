@@ -280,10 +280,42 @@ main {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  border: 1px solid var(--border);
-  background: var(--background);
-  transition: border-color 0.28s ease, transform 0.28s ease, background-color 0.28s ease;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 
+    0 20px 45px -12px rgba(0, 0, 0, 0.15),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.08);
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
   overflow: hidden;
+}
+
+.dark .photo-frame {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(18, 20, 23, 0.55);
+  box-shadow: 
+    0 20px 45px -12px rgba(0, 0, 0, 0.45),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Glass reflection sheen overlay — image printed under frosted glass */
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.03) 35%, transparent 60%);
+  pointer-events: none;
+  border-radius: 18px;
+  z-index: 10;
+  transition: opacity 0.35s ease;
+}
+
+.dark .photo-frame::after {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 35%, transparent 60%);
 }
 
 /* Corner registration brackets */
@@ -331,7 +363,9 @@ main {
 }
 .technical-frame:hover .photo-frame {
   border-color: var(--accent);
-  background-color: var(--accent);
+  box-shadow: 
+    0 24px 50px -10px rgba(0, 0, 0, 0.22),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.7);
   transform: scale(1.01);
 }
 
@@ -1316,26 +1350,58 @@ footer a:hover {
   font-weight: 600;
 }
 
-/* Floating preview image following the cursor */
+/* Floating preview image following the cursor — Glassmorphic Card Pane */
 .article-hover-preview {
   position: fixed;
   pointer-events: none;
   z-index: 1000;
-  border-radius: 8px;
-  overflow: hidden;
+  padding: 6px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.16),
-    0 4px 12px rgba(0, 0, 0, 0.08);
-  height: 80px;
+    0 20px 40px -10px rgba(0, 0, 0, 0.16),
+    0 8px 16px -6px rgba(0, 0, 0, 0.08),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.7);
+  height: 92px; /* 80px image + 12px glass padding */
   width: auto;
   transform: translate3d(0, 0, 0);
   animation: previewFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+}
+
+.dark .article-hover-preview {
+  background: rgba(18, 20, 23, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 20px 45px -10px rgba(0, 0, 0, 0.55),
+    0 8px 16px -6px rgba(0, 0, 0, 0.3),
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Glass reflection sheen overlay for hover preview card */
+.article-hover-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 65%);
+  pointer-events: none;
+  border-radius: 16px;
+  z-index: 10;
+}
+
+.dark .article-hover-preview::after {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 65%);
 }
 
 .article-hover-preview img {
   height: 100%;
   width: auto;
   display: block;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 @keyframes previewFadeIn {
